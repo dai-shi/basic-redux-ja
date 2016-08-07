@@ -1,10 +1,10 @@
 # Immutability
 
-ReduxではstateにImmutability(不変性)という制約を与えることで、シンプルにしてパフォーマンスを向上させることができます。
+Reduxではstateにimmutability(不変性)という制約を与えることで、シンプルにしてパフォーマンスを向上させることができます。
 
 ## Mutable object
 
-JavaScriptのオブジェクトは一般的にmutableです。
+JavaScriptのオブジェクトは一般的にmutable(可変)です。
 
 ```
 const obj = { a: 1, b: 2 };
@@ -22,7 +22,7 @@ console.log(obj);
 
 ## Immutable object
 
-JavaScriptではオブジェクトはimmutableではありませんから、immutable objectは規約です。
+JavaScriptではオブジェクトはimmutable(不変)ではありませんから、immutable objectは規約です。
 つまり、オブジェクトをimmutableとして扱いましょう、と決めるだけです。
 
 ```
