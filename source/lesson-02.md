@@ -50,8 +50,12 @@ const obj = { a: 1, b: 2 };
 const obj2 = Object.assign({}, obj, { a: 3 });
 ```
 
+現在策定中のObject spread propertiesが使えれば、次のようにも書けます。
 
-TODO
+```
+const obj = { a: 1, b: 2 };
+const obj2 = { ...obj, a: 3 };
+```
 
 ## 何がうれしいか
 
