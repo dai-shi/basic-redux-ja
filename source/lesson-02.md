@@ -59,7 +59,22 @@ const obj2 = { ...obj, a: 3 };
 
 ## 何がうれしいか
 
-TODO
+オブジェクトがimmutableであることを前提とすると、オブジェクトの一致性の比較が非常に簡単にできます。(また、コピーも簡単になります)
+
+JavaScriptでは`===`で一致性を比較できます。(個別に新規で同じオブジェクトを作る場合は除く)
+
+```
+const obj = { a: 1, b: 2 };
+const obj2 = Object.assign({}, obj, { a: 3 });
+console.log(obj === obj2);
+const obj3 = obj;
+obj3.a = 3;
+console.log(obj === obj3);
+```
+
+オブジェクトを変更するときに新しいオブジェクトを作るのですから当然ですが、mutableを許容する場合は、オブジェクトの比較には[deepEqual](https://github.com/substack/node-deep-equal)のようなものを使うことが必要になります。これは再帰的な処理であり一般的に重いです。
+
+Reduxはapplication stateのためのライブラリであり、そのstateが変化したかどうかを検知することは重要です。stateをimmutable objectで構成することで、stateのどの部分が変更されたかをたどることが容易になります。
 
 ## Immutable array
 
@@ -68,3 +83,4 @@ TODO
 ## おまけ: Object.freeze
 
 TODO
+https://github.com/substack/deep-freeze
