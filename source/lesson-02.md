@@ -78,7 +78,27 @@ Reduxはapplication stateのためのライブラリであり、そのstateが�
 
 ## Immutable array
 
-TODO
+JavaScriptではarrayもobjectの一種であり、上記の議論はarrayについても当てはまります。
+一方、immutableの規約に沿ったarrayならではの書き方もあります。
+
+Array.pushやArray.spliceはオブジェクトを書き換えてしまうので使いません。
+代わりにArray.concatやArray.sliceを使います。
+
+```
+const arr = [2, 4, 6, 8];
+const arr2 = arr.concat([10, 12]);
+const arr3 = arr.slice(0, 3);
+const arr4 = arr.slice(0, 2).concat([5]).concat(arr.slice(2));
+```
+
+ES2015のspread operatorを使うとさらに簡潔に書くことができます。
+
+```
+const arr = [2, 4, 6, 8];
+const arr2 = [...arr, 10, 12];
+const arr3 = arr.slice(0, 3);
+const arr4 = [...arr.slice(0, 2), 5, ...arr.slice(2)];
+```
 
 ## おまけ: Object.freeze
 
