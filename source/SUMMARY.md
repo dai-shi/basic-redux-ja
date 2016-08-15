@@ -11,3 +11,4 @@
 * Appendix 01: ES2015について
 * Appendix 02: Immutable.jsについて
 * Appendix 03: react-reduxについて
+* Appendix 04: middlewareについて
