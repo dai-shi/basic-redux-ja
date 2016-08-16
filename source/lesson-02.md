@@ -102,5 +102,8 @@ const arr4 = [...arr.slice(0, 2), 5, ...arr.slice(2)];
 
 ## おまけ: Object.freeze
 
+JavaScriptのオブジェクトはmutableであるが作成後に変更できないようにする
+`Object.freeze`という方法がある。
+
 TODO
 https://github.com/substack/deep-freeze
