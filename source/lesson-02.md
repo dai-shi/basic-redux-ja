@@ -100,10 +100,17 @@ const arr3 = arr.slice(0, 3);
 const arr4 = [...arr.slice(0, 2), 5, ...arr.slice(2)];
 ```
 
+## 課題
+
+1. オブジェクトを定義して、そのオブジェクトの一つのプロパティを変更した新しいオブジェクトを作成する
+2. 配列を定義して、その配列に新しい要素を追加した新しい配列を作成する
+3. (難問) オブジェクトを定義して、そのオブジェクトの一つのプロパティを削除した新しいオブジェクトを作成する
+4. (難問) 配列を定義して、その配列の一つの要素を削除した新しい配列を作成する
+
 ## おまけ: Object.freeze
 
-JavaScriptのオブジェクトはmutableであるが作成後に変更できないようにする
-`Object.freeze`という方法がある。
+JavaScriptのオブジェクトはmutableであるが作成後に変更できないようにする`Object.freeze`という方法があります。これを用いれば、immutable object相当を作ることができます。
 
-TODO
-https://github.com/substack/deep-freeze
+`Object.freeze`自体は1階層にしか作用しないため、それを再帰的に適用する[deep-freeze](https://github.com/substack/deep-freeze)を使うことになります。
+
+しかし、deep-freezeは処理が重くなるため実用的とは言えません。Reduxのドキュメントでは、deep-freezeはテストで使われているのでそれが現実的でしょう。
