@@ -11,7 +11,12 @@ JS Binを使います。
 下記の手順を実施してください。
 
 1. 左上の「×」を押して画面を広くする
-2. HTMLの`<head>`タグの中に`<script src="https://npmcdn.com/redux@3.5.2/dist/redux.min.js"></script>`を追記する
+2. HTMLの`<head>`タグの中に
+```
+<script src="https://npmcdn.com/redux@3.5.2/dist/redux.min.js"></script>
+<script src="https://wzrd.in/standalone/deep-freeze@latest"></script>
+```
+を追記する
 3. HTMLボタンを押してHTMLタブを消す
 4. Consoleボタンを押してConsoleタブを消す
 5. JavaScriptボタンを押してJavaScriptタブを表示する
