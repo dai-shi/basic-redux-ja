@@ -8,10 +8,10 @@
 * [Lesson 05: Action](lesson-05.md)
 * [Lesson 06: Reducer合成](lesson-06.md)
 * [Lesson 07: Store](lesson-07.md)
-* [Lesson 08: Reactとの接続](lesson-08.md)
-* [Lesson 09: 総合課題](lesson-09.md)
+* [Lesson 08: 総合課題](lesson-08.md)
 
 * [Appendix 01: ES2015について](appendix-01.md)
-* [Appendix 02: Immutable.jsについて](appendix-02.md)
+* [Appendix 02: Reactとの接続](lesson-02.md)
 * [Appendix 03: react-reduxについて](appendix-03.md)
 * [Appendix 04: middlewareについて](appendix-04.md)
+* [Appendix 05: Immutable.jsについて](appendix-05.md)
