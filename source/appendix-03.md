@@ -1,3 +1,0 @@
-# react-reduxについて
-
-TODO
