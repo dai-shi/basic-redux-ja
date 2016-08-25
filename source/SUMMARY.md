@@ -11,7 +11,7 @@
 * [Lesson 08: 総合課題](lesson-08.md)
 
 * [Appendix 01: ES2015について](appendix-01.md)
-* [Appendix 02: Reactとの接続](lesson-02.md)
+* [Appendix 02: Reactとの接続](appendix-02.md)
 * [Appendix 03: react-reduxについて](appendix-03.md)
 * [Appendix 04: middlewareについて](appendix-04.md)
 * [Appendix 05: Immutable.jsについて](appendix-05.md)
