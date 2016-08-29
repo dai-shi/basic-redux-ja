@@ -67,7 +67,7 @@ let state = {
 state = Object.assign({}, state, {
   taskList: [
     Object.assign({}, state.taskList[0], { completed: true }),
-    ...object.state.taskList.slice(1),
+    ...state.taskList.slice(1),
   ],
 });
 ```

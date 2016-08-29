@@ -12,10 +12,10 @@ const counterReducer = (state = 0, action) => {
     return state;
   }
 };
-const reducer = combineReducers({
+const reducer = Redux.combineReducers({
   counter: counterReducer,
 });
-const store = createStore(reducer);
+const store = Redux.createStore(reducer);
 ```
 
 storeにはstateを初期化する機能はありませんので、
@@ -62,4 +62,4 @@ store.dispatch({ type: 'INCREMENT' });
 
 1. 上記コードの動作を確認する
 2. サブreducerを追加する
-3. (難問) stateの結果をDOMに表示する、HTMLの<button>でactionを発行する
+3. (難問) stateの結果をDOMに表示する、HTMLの`<button>`でactionを発行する

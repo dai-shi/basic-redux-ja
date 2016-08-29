@@ -1,6 +1,6 @@
 # Reducer合成
 
-実はこれまでのところReduxと言っても特別なライブラリを使っていたわけではありません。Reduxは考え方やアーキクチャに相当するものです。とは言え、Reduxライブラリはそれを補助する機能を提供します。その一つがReducer合成です。
+実はこれまでのところReduxと言っても特別なライブラリを使っていたわけではありません。Reduxは考え方やアーキテクチャに相当するものです。とは言え、Reduxライブラリはそれを補助する機能を提供します。その一つがReducer合成です。
 
 ## Reducerを一つの場合
 
@@ -55,7 +55,7 @@ const reducer3 = ...;
 `reducer1`がstateの`key1`の値を更新するreducerであるとします。他も同様です。この分割された3つのreducerを合成して一つにするには次のようにします。
 
 ```
-const recuder = combineReducers({
+const recuder = Redux.combineReducers({
   key1: reducer1,
   key2: reducer2,
   key3: reducer3,
@@ -75,7 +75,7 @@ let state = {
 };
 const counterReducer = (state, action) => { ... };
 const textReducer = (state, action) => { ... };
-const reducer = combineReducers({
+const reducer = Redux.combineReducers({
   counter: counterReducer,
   text: textReducer,
 });
@@ -85,6 +85,6 @@ const action2 = { type: 'SET_TEXT', text: 'abc' };
 
 ## 課題
 
-1. reducerを完成させる
+1. reducerを完成させる (undefinedの入力にも対応させる必要あり)
 2. 合成されたreducerの動作テストを行う
 3. (難問) 一つのactionで複数のサブreducerがstateを更新する例を作る
