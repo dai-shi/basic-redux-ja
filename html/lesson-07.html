@@ -208,6 +208,78 @@
     
 
     
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="appendix-01.md">
+            
+                <span>
+            
+                    
+                    Appendix 01: ES2015について
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="appendix-02.md">
+            
+                <span>
+            
+                    
+                    Appendix 02: Reactとの接続
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="appendix-03.md">
+            
+                <span>
+            
+                    
+                    Appendix 03: react-reduxについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="appendix-04.md">
+            
+                <span>
+            
+                    
+                    Appendix 04: middlewareについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="appendix-05.md">
+            
+                <span>
+            
+                    
+                    Appendix 05: Immutable.jsについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -258,10 +330,10 @@
     return state;
   }
 };
-const reducer = combineReducers({
+const reducer = Redux.combineReducers({
   counter: counterReducer,
 });
-const store = createStore(reducer);</code></pre>
+const store = Redux.createStore(reducer);</code></pre>
 <p>store&#x306B;&#x306F;state&#x3092;&#x521D;&#x671F;&#x5316;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x3001;
 reducer&#x304C;state&#x306E;&#x521D;&#x671F;&#x5316;&#x3082;&#x62C5;&#x5F53;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;
 &#x5358;&#x306B;reducer&#x306B;state&#x304C;&#x6E21;&#x3055;&#x308C;&#x3066;&#x3053;&#x306A;&#x304B;&#x3063;&#x305F;&#x3068;&#x304D;&#x306B;&#x521D;&#x671F;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308C;&#x3070;&#x3088;&#x3044;&#x3067;&#x3059;&#x3002;</p><h2 id="store&#x306B;action&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;">store&#x306B;action&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;</h2><p>&#x4E0A;&#x8A18;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x7D9A;&#x3044;&#x3066;&#x3001;</p><pre><code>const action = { type: &apos;INCREMENT&apos; };
@@ -279,8 +351,8 @@ store.dispatch({ type: &apos;INCREMENT&apos; });</code></pre>
 </li>
 <li>&#x30B5;&#x30D6;reducer&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;
 </li>
-<li>(&#x96E3;&#x554F;) state&#x306E;&#x7D50;&#x679C;&#x3092;DOM&#x306B;&#x8868;&#x793A;&#x3059;&#x308B;&#x3001;HTML&#x306E;<button>&#x3067;action&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;
-</button></li></ol>
+<li>(&#x96E3;&#x554F;) state&#x306E;&#x7D50;&#x679C;&#x3092;DOM&#x306B;&#x8868;&#x793A;&#x3059;&#x308B;&#x3001;HTML&#x306E;<code>&lt;button&gt;</code>&#x3067;action&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;
+</li></ol>
 
                                 
                                 </section>
@@ -324,7 +396,7 @@ store.dispatch({ type: &apos;INCREMENT&apos; });</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 07: Store","level":"1.8","depth":1,"next":{"title":"Lesson 08: 総合課題","level":"1.9","depth":1,"path":"lesson-08.md","ref":"lesson-08.md","articles":[]},"previous":{"title":"Lesson 06: Reducer合成","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-07.md","mtime":"2016-08-26T14:23:10.023Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-28T22:18:22.857Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 07: Store","level":"1.8","depth":1,"next":{"title":"Lesson 08: 総合課題","level":"1.9","depth":1,"path":"lesson-08.md","ref":"lesson-08.md","articles":[]},"previous":{"title":"Lesson 06: Reducer合成","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-07.md","mtime":"2016-08-29T12:02:01.831Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-30T21:08:29.147Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

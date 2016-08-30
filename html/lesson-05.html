@@ -208,6 +208,78 @@
     
 
     
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="appendix-01.md">
+            
+                <span>
+            
+                    
+                    Appendix 01: ES2015について
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="appendix-02.md">
+            
+                <span>
+            
+                    
+                    Appendix 02: Reactとの接続
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="appendix-03.md">
+            
+                <span>
+            
+                    
+                    Appendix 03: react-reduxについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="appendix-04.md">
+            
+                <span>
+            
+                    
+                    Appendix 04: middlewareについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="appendix-05.md">
+            
+                <span>
+            
+                    
+                    Appendix 05: Immutable.jsについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -252,7 +324,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="action">Action</h1><p>Reducer&#x306E;&#x5165;&#x529B;&#x306F;state&#x3068;action&#x3067;&#x3059;&#x3002;action&#x306F;state&#x3092;&#x5909;&#x5316;&#x3055;&#x305B;&#x308B;&#x64CD;&#x4F5C;&#x306B;&#x76F8;&#x5F53;&#x3057;&#x307E;&#x3059;&#x3002;
-Redux&#x3067;&#x306F;action&#x306F;type&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3064;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3042;&#x308B;&#x3068;&#x3044;&#x3046;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;</p><h2 id="action&#x306E;&#x4F8B;">action&#x306E;&#x4F8B;</h2><p>&#x69D8;&#x3005;&#x306A;action&#x306E;&#x4F8B;&#x3092;&#x898B;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;&#x3053;&#x3053;&#x306B;&#x3042;&#x308B;&#x3082;&#x306E;&#x306F;&#x5178;&#x578B;&#x7684;&#x306A;&#x3082;&#x306E;&#x3060;&#x3051;&#x3067;&#x3042;&#x308A;&#x3001;&#x767A;&#x60F3;&#x3092;&#x8C4A;&#x304B;&#x306B;&#x3059;&#x308C;&#x3070;&#x3001;&#x69D8;&#x3005;&#x306A;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>const action01 = { type: &apos;INCREMENT&apos; };
+Redux&#x3067;&#x306F;action&#x306F;type&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3064;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3042;&#x308B;&#x3068;&#x3044;&#x3046;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;</p><h2 id="action&#x306E;&#x4F8B;">action&#x306E;&#x4F8B;</h2><p>&#x69D8;&#x3005;&#x306A;action&#x306E;&#x4F8B;&#x3092;&#x898B;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;&#x3053;&#x3053;&#x306B;&#x3042;&#x308B;&#x3082;&#x306E;&#x306F;&#x5178;&#x578B;&#x7684;&#x306A;&#x3082;&#x306E;&#x3060;&#x3051;&#x3067;&#x3042;&#x308A;&#x3001;&#x767A;&#x60F3;&#x3092;&#x8C4A;&#x304B;&#x306B;&#x3059;&#x308C;&#x3070;&#x3001;&#x3055;&#x3089;&#x306B;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>const action01 = { type: &apos;INCREMENT&apos; };
 const action02 = { type: &apos;COUNT_UP&apos;, count: 3 };
 const action03 = { type: &apos;CHANGE_TEXT&apos;, text: &apos;foo&apos; };
 const action04 = { type: &apos;CLICK_POINT&apos;, x: 321, y: 123 };
@@ -327,7 +399,7 @@ console.log(countUp(3));</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Action","level":"1.6","depth":1,"next":{"title":"Lesson 06: Reducer合成","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Reducer","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-08-25T10:54:57.585Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-28T22:18:22.857Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Action","level":"1.6","depth":1,"next":{"title":"Lesson 06: Reducer合成","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Reducer","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-08-29T11:45:55.347Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-30T21:08:29.147Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
