@@ -1,6 +1,6 @@
 # Application state
 
-Reduxはapplication stateを管理するための仕組みを提供します。application stateとはアプリケーションの状態であり、単一のデータ構造で表現します。つまり、JavaScript内で状態を保持する変数が分散して配置せず、一箇所に集中して管理します。
+Reduxはapplication stateを管理するための仕組みを提供します。application stateとはアプリケーションの状態であり、単一のデータ構造で表現します。つまり、JavaScript内で状態を保持する変数を分散して配置せず、一箇所に集中して管理します。
 
 ## application stateの例
 

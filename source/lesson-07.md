@@ -41,7 +41,7 @@ store.dispatch(action);
 const state = store.getState();
 ```
 
-とするとstateを取得できます。これはその時点のstateであり変化しないものなので、どこかに保存しておいても構いません。実際、Redux DevToolsではstateを保存して再度プレイバックすることができます。
+とするとstateを取得できます。これはその時点のstateであり変化しないものなので、どこかに保存しておいても構いません。実際に、Redux DevToolsではstateを保存して再度プレイバックすることができます。
 
 ## storeにリスナーを登録する
 
