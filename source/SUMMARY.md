@@ -12,6 +12,7 @@
 
 
 * [Appendix 01: ES2015について](appendix-01.md)
+
 <!--
 * [Appendix 02: Reactとの接続](appendix-02.md)
 * [Appendix 03: react-reduxについて](appendix-03.md)
