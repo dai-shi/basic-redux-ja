@@ -54,6 +54,6 @@ console.log(countUp(3));
 
 ## 課題
 
-1. 「いいね」ボタンを置した際のactionを創作してみる
+1. 「いいね」ボタンを押した際のactionを創作してみる
 2. (難問) stateを定義して上記actionを処理するreducerを書く
 3. (難問) reducerの動作テストをする

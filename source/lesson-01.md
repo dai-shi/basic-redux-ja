@@ -18,7 +18,7 @@ JS Binを使います。
 ```
 を追記する
 3. HTMLボタンを押してHTMLタブを消す
-4. Consoleボタンを押してConsoleタブを消す
+4. Consoleボタンを押してConsoleタブを表示する
 5. JavaScriptボタンを押してJavaScriptタブを表示する
 6. 青字のJavaScriptの右にある三角マークを押して、ドロップダウンから「ES6/Babel」を選択する (このエリアをJavaScriptエリアと呼ぶ)
 

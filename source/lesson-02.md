@@ -87,7 +87,7 @@ Array.pushやArray.spliceはオブジェクトを書き換えてしまうので�
 ```
 const arr = [2, 4, 6, 8];
 const arr2 = arr.concat([10, 12]);
-const arr3 = arr.slice(0, 3);
+const arr3 = arr.slice(0, 2);
 const arr4 = arr.slice(0, 2).concat([5]).concat(arr.slice(2));
 ```
 
@@ -96,7 +96,7 @@ ES2015のspread operatorを使うとさらに簡潔に書くことができま�
 ```
 const arr = [2, 4, 6, 8];
 const arr2 = [...arr, 10, 12];
-const arr3 = arr.slice(0, 3);
+const arr3 = arr.slice(0, 2);
 const arr4 = [...arr.slice(0, 2), 5, ...arr.slice(2)];
 ```
 
@@ -104,8 +104,7 @@ const arr4 = [...arr.slice(0, 2), 5, ...arr.slice(2)];
 
 1. オブジェクトを定義して、そのオブジェクトの一つのプロパティを変更した新しいオブジェクトを作成する
 2. 配列を定義して、その配列に新しい要素を追加した新しい配列を作成する
-3. (難問) オブジェクトを定義して、そのオブジェクトの一つのプロパティを削除した新しいオブジェクトを作成する
-4. (難問) 配列を定義して、その配列の一つの要素を削除した新しい配列を作成する
+3. (難問) 配列を定義して、その配列の一つの要素を削除した新しい配列を作成する
 
 ## Object.freeze
 
