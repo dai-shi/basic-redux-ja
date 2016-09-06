@@ -1,37 +1,26 @@
 # Application state
 
-Reduxはapplication stateを管理するための仕組みを提供します。application stateとはアプリケーションの状態であり、単一のデータ構造で表現します。つまり、JavaScript内で状態を保持する変数を分散して配置せず、一箇所に集中して管理します。
+Reduxはapplication stateを管理するための仕組みを提供します。
+application stateとはアプリケーションの状態であり、
+単一のデータ構造で表現します。
+つまり、JavaScript内で状態を保持する変数を分散して配置せず、
+一箇所に集中して管理します。
 
 ## application stateの例
 
-例えば、TODOアプリでタスクのリストを状態として持つ場合、下記のようなstateが考えられます。
+例えば、電卓アプリでの状態は、入力中の数字と計算結果の数字があります。
+また、どちらの数字を表示しているかのフラグがあります。
+これを実現する一例として、下記のようなstateが考えられます。
 
 ```
 let state = {
-  taskList: [
-    { name: 'task01', completed: false },
-    { name: 'task02', completed: false },
-    { name: 'task03', completed: false },
-    { name: 'task04', completed: true },
-  ],
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
 };
 ```
 
-これに加えて、表示中のタスクを状態として持つ場合は、その状態も同じstateで保持します。
-
-```
-let state = {
-  taskList: [
-    { name: 'task01', completed: false },
-    { name: 'task02', completed: false },
-    { name: 'task03', completed: false },
-    { name: 'task04', completed: true },
-  ],
-  showingTaskName: 'task02',
-};
-```
-
-これは一例にすぎず、他にも様々なstateが考えられます。ポイントはアプリに一つの集中したstateであることです。Single source of truthとも言われます。
+他にも様々な実現形態のstateが考えられます。ポイントはアプリに一つの集中したstateであることです。Single source of truthとも言われます。
 
 ## stateを更新する
 
