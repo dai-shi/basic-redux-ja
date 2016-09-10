@@ -76,6 +76,8 @@ console.log(obj === obj3);
 
 Reduxはapplication stateのためのライブラリであり、そのstateが変化したかどうかを検知することは重要です。stateをimmutable objectで構成することで、stateのどの部分が変更されたかをたどることが容易になります。
 
+Reactの場合は、stateが変化された場合にrenderを呼び出してコンポーネントを再描画することになります。つまり、stateの変化を検知できないと画面が更新されなくなってしまいます。また、stateの変化の検知にコストがかかるとパフォーマンスが低下してしまいます。そのため、stateの変化を`===`で判断できることは、パフォーマンス向上につながります。
+
 ## Immutable array
 
 JavaScriptではarrayもobjectの一種であり、上記の議論はarrayについても当てはまります。
@@ -102,19 +104,37 @@ const arr4 = [...arr.slice(0, 2), 5, ...arr.slice(2)];
 
 ## Object.freeze
 
-JavaScriptのオブジェクトはmutableであるが作成後に変更できないようにする`Object.freeze`という方法があります。これを用いれば、immutable object相当を作ることができます。
+JavaScriptのオブジェクトはmutableですが、作成後に変更できないようにする`Object.freeze`という方法があります。これを用いれば、immutable object相当を作ることができます。
 
-`Object.freeze`自体は1階層にしか作用しないため、それを再帰的に適用する[deep-freeze](https://github.com/substack/deep-freeze)を使うことになります。
+`Object.freeze`自体は一階層にしか作用しないため、それを再帰的に適用する[deep-freeze](https://github.com/substack/deep-freeze)を使うことになります。
 
 しかし、deep-freezeは処理が重くなるため実用的とは言えません。Reduxのドキュメントでは、deep-freezeはテストで使われているのでそれが現実的でしょう。
 
 ## immutable.jsを使う場合
 
-TODO
+上記の例と同様の例をimmutable.jsで書いてみると、下記のようになります。
+
+```
+const obj = Immutable.Map({ a: 1, b: 2 });
+const obj2 = obj.set('a', 3);
+console.log(obj.toJS());
+console.log(obj2.toJS());
+console.log(obj === obj2);
+```
+
+```
+const arr = Immutable.List([2, 4, 6, 8]);
+const arr2 = arr.push(10, 12);
+const arr3 = arr.slice(0, 2);
+const arr4 = arr.insert(2, 5);
+console.log(arr.toJS());
+console.log(arr2.toJS());
+console.log(arr3.toJS());
+console.log(arr4.toJS());
+```
 
 ## 課題
 
-1. オブジェクトを定義して、そのオブジェクトの一つのプロパティを変更した新しいオブジェクトを作成する
-2. 配列を定義して、その配列に新しい要素を追加した新しい配列を作成する
-3. (難問) 配列を定義して、その配列の一つの要素を削除した新しい配列を作成する
-
+1. 上記例を実行して動きを理解する
+2. 電卓アプリのstateを書き換えてみる(immutability制約のもとで)
+3. (挑戦) 上記のstateを書き換えを関数化する(複数のやり方あり)
