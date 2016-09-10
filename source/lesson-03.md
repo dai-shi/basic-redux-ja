@@ -24,20 +24,24 @@ let state = {
 
 ## なぜ一箇所で管理するか
 
-Reactで説明するとすべてのコンポーネントがstatelessになります。
+Reactの場合は、すべてのコンポーネントがstatelessになります。
 副作用がまったくないため、動作の予測がしやすくなります。
 また、stateを切り替えるだけでViewの動作を確認することができます。
 Redux DevToolsを使うとタイムマシン風のリプレイが可能です。
 
 ## immutable.jsを使う場合
 
+[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
+上記で例示したstateをimmutable.jsで作成すると次のようになります。
+
+```
 let state = Immutable.Map({
   inputValue: 0,
   resultValue: 0,
   showingResult: false,
 });
+```
 
-[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
 immutable.jsを使うとimmutabilityが保証されるので、
 JavaScript objectを単純に使う場合より便利です。
 一方、immutable.jsで提供されている機能以外のことを行おうとすると難しくなるかもしれないため、どちらを選択するかは注意が必要です。
