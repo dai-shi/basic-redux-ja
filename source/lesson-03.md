@@ -31,11 +31,27 @@ Redux DevToolsを使うとタイムマシン風のリプレイが可能です。
 
 ## immutable.jsを使う場合
 
+let state = Immutable.Map({
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+});
 
+[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
+immutable.jsを使うとimmutabilityが保証されるので、
+JavaScript objectを単純に使う場合より便利です。
+一方、immutable.jsで提供されている機能以外のことを行おうとすると難しくなるかもしれないため、どちらを選択するかは注意が必要です。
 
+## 補足
 
-## 課題
+今回の例におけるapplication stateは一階層のobjectですが、それに限定する必要はありません。下記のようにobjectやarrayが入れ子になっても問題ありません。少し複雑なアプリを想定するとそのようになることが通常です。
 
-1. 
-2. 
-3. 
+```
+let state = {
+  name: {
+    first: 'Ebisu',
+    last: 'JS',
+  },
+  items: [1, 3, 7, 11],
+};
+```

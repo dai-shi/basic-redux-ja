@@ -18,6 +18,7 @@ JS Binを使います。
 <script src="https://fb.me/react-dom-15.1.0.js"></script>
 <script src="https://npmcdn.com/redux@3.5.2/dist/redux.min.js"></script>
 <script src="https://wzrd.in/standalone/deep-freeze@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
 ```
 を追記する
 3. HTMLボタンを押してHTMLタブを消す
