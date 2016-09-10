@@ -1,59 +1,49 @@
 # Action
 
-Reducerの入力はstateとactionです。actionはstateを変化させる操作に相当します。
-Reduxではactionはtypeプロパティを持つオブジェクトであるというだけです。
+actionはstateを変化させる操作に相当します。
+actionはReducerの入力の一つになります。
+Reduxではactionはtypeプロパティを持つオブジェクトです。
 
 ## actionの例
 
-様々なactionの例を見てみましょう。ここにあるものは典型的なものだけであり、発想を豊かにすれば、さらに可能性があります。
+電卓アプリの例でactionを考えてみましょう。
+
+まず、計算を実行する操作として、"+"ボタンを押すがあります。
+これに相当するactionを例えば次のように定義します。
 
 ```
-const action01 = { type: 'INCREMENT' };
-const action02 = { type: 'COUNT_UP', count: 3 };
-const action03 = { type: 'CHANGE_TEXT', text: 'foo' };
-const action04 = { type: 'CLICK_POINT', x: 321, y: 123 };
-const action05 = { type: 'UPDATE_DOCUMENT', doc: { title: 'abc', content: '...' };
+const action = { type: 'PLUS' };
 ```
 
-## Reducer再び
-
-COUNT_UPにも対応させたreducerを見てみましょう。
+次に、数字ボタンを押す操作を考えます。
 
 ```
-let state = { counter: 0 };
-const action = { type: 'COUNT_UP', count: 3 };
-
-const reducer = (state, action) => {
-  if (action.type === 'INCREMENT') {
-    return Object.assign({}, state, { counter: state.counter + 1 });
-  } else if (action.type === 'COUNT_UP') {
-    return Object.assign({}, state, { counter: state.counter + action.count });
-  } else {
-    return state;
-  }
-};
-
-state = reducer(state, action);
-console.log(state);
+const action1 = { type: 'INPUT_NUMBER', number: 1 };
+const action2 = { type: 'INPUT_NUMBER', number: 2 };
+const action3 = { type: 'INPUT_NUMBER', number: 3 };
 ```
+
+このようにactionには任意のプロパティを追加することができます。
 
 ## Action Creator
 
-Actionを作る関数をAction Creatorとして用意する場合もあります。必須ではありません。小規模関発ではない方が分かりやすいかもしれません。
+actionを作る関数をAction Creatorとして用意する場合もあります。
+必須ではありません。小規模関発ではない方が分かりやすいかもしれません。
 
 パラメータを受け取ってactionを返す関数です。例えば、下記のようになります。
 
 ```
-const countUp = (count) => ({
-  type: 'COUNT_UP',
-  count,
+const doPlus = () => ({
+  type: 'PLUS',
 });
 
-console.log(countUp(3));
+const inputNumber = (number) => ({
+  type: 'INPUT_NUMBER',
+  number,
+});
+
+console.log(doPlus());
+console.log(inputNumber(3));
+console.log(inputNumber(4));
+console.log(inputNumber(5));
 ```
-
-## 課題
-
-1. 「いいね」ボタンを押した際のactionを創作してみる
-2. (難問) stateを定義して上記actionを処理するreducerを書く
-3. (難問) reducerの動作テストをする
