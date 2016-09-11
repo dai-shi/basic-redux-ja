@@ -1,74 +1,109 @@
 # Reducer
 
-ReducerはReduxの名前のもとにもなっているものですが、そもそもreduceというのは関数型プログラミングで古くからあるものです。MapReduceなどが有名です。
+ReducerはReduxの名前のもとにもなっているものですが、
+そもそもreduceというのは関数型プログラミングで古くからあるものです。
+MapReduceなどが有名です。
 
-Reduxにおけるreducerはstateとactionを入力とし、新しいstateを返す関数です。このときのstateはすべてimmutableとして扱わなければいけません。actionはstateを変化させる操作に相当します。
+Reduxにおけるreducerはstateとactionを入力とし、新しいstateを返す関数です。
+このときのstateはすべてimmutabilityの制約のもとで扱わなければいけません。
+actionはstateを変化させる操作に相当します。
 
-## 簡単な例
-
-```
-let state = { counter: 0 };
-```
-
-という状態を考えましょう。このカウンタを増加させるactionをINCREMENTとします。
+## 電卓アプリの例
 
 ```
-const action = { type: 'INCREMENT' };
+let state = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+};
 ```
 
-このように、actionはtype属性を持ったオブジェクトで表現します。
+という状態を考えましょう。ここで、1のボタンを押したactionを考えます。
+
+```
+const action1 = { type: 'INPUT_NUMBER', number: 1 };
+```
 
 `reducer`に期待する動作は下記です。
 
 ```
-let state = { counter: 0 };
-const action = { type: 'INCREMENT' };
-state = reducer(state, action);
-// state is { counter: 1 }
+state = reducer(state, action1);
+// state is { inputValue: 1, resultValue: 0, showingResult: false }
+state = reducer(state, action1);
+// state is { inputValue: 11, resultValue: 0, showingResult: false }
 ```
 
-さて、ここでimmutabilityを忘れていると、
+電卓の動きを考えながら進めましょう。
+
+```
+const action0 = { type: 'INPUT_NUMBER', number: 0 };
+```
+
+というactionも追加で考えます。続けて、reducerを呼び出すと、
+
+```
+state = reducer(state, action0);
+// state is { inputValue: 110, resultValue: 0, showingResult: false }
+state = reducer(state, action0);
+// state is { inputValue: 1100, resultValue: 0, showingResult: false }
+```
+
+のようになると期待されます。
+
+これを実現するreducerは次のようになります。
 
 ```
 const reducer = (state, action) => {
-  if (action.type === 'INCREMENT') {
-    state.counter++;
-  }
-  return state;
-};
-```
-
-などとしてしまうかもしれません。しかしこれはstateのオブジェクトを書き換えているので正しくありません。
-
-```
-const reducer = (state, action) => {
-  if (action.type === 'INCREMENT') {
-    return Object.assign({}, state, { counter: state.counter + 1 });
+  if (action.type === 'INPUT_NUMBER') {
+    const newValue = state.inputValue * 10 + action.number;
+    return { ...state, inputValue: newValue };
   } else {
     return state;
   }
 };
 ```
 
-のようにするのが正しいです。immutabilityを忘れないようにしましょう。
-
-上記の例で3行目は、`Object.assign`を使わず、
-
-```
-    return { counter: state.counter + 1 };
-```
-
-でよいと考えるかもしれません。今回の例ではそれでも問題とはなりませんが、application stateには様々な情報が含まれますので、実際には必要な部分だけを更新し、それ以外の部分は変更しないようにする必要があります。よって、`Object.assign`は必須になります。
+これはまだresultを考慮していないので、機能としては不十分ですが、
+上記の期待する動作は満たします。
 
 ## テスト
 
 reducerが正しく動いているかはテストすることができます。
+上記の期待する動作について結果が正しいか調べます。
+実際はアサーションライブラリを用いますが、今回はconsole.logで判定結果を表示します。
 
 ```
-const state = { counter: 0 };
-const action = { type: 'INCREMENT' };
-const newState = reducer(state, action);
-if (newState.counter === 1) {
+let state = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+};
+const action0 = { type: 'INPUT_NUMBER', number: 0 };
+const action1 = { type: 'INPUT_NUMBER', number: 1 };
+
+state = reducer(state, action0);
+if (state.inputValue === 0 && state.resultValue === 0 && state.showingResult === false) {
+  console.log('OK');
+} else {
+  console.log('NG');
+}
+
+state = reducer(state, action1);
+if (state.inputValue === 1 && state.resultValue === 0 && state.showingResult === false) {
+  console.log('OK');
+} else {
+  console.log('NG');
+}
+
+state = reducer(state, action1);
+if (state.inputValue === 11 && state.resultValue === 0 && state.showingResult === false) {
+  console.log('OK');
+} else {
+  console.log('NG');
+}
+
+state = reducer(state, action0);
+if (state.inputValue === 110 && state.resultValue === 0 && state.showingResult === false) {
   console.log('OK');
 } else {
   console.log('NG');
@@ -80,22 +115,17 @@ if (newState.counter === 1) {
 また、immutabilityのテストもできます。
 
 ```
-const state = { counter: 0 };
-const action = { type: 'INCREMENT' };
+const state = ...;
+const action = ...;
 deepFreeze(state);
 deepFreeze(action);
-const newState = reducer(state, action);
-if (newState.counter === 1) {
-  console.log('OK');
-} else {
-  console.log('NG');
-}
+state = reducer(state, action);
 ```
 
-このようにするとreducerがstateやactionを書き換えていないことが分かります。
+このようにするとreducerがstateやactionを書き換えていないことを確認できます。
 
 ## 課題
 
-1. INCREMENTのテストパターンを増やして動作を確認する
-2. (難問) DECREMENTを実装する
-3. (難問) reducer内でわざとstateを書き換えテストが失敗することを確認する
+1. "+"ボタンの期待する動作をテストとして書く
+2. 上記テストを通るようにreducerを実装する
+3. (挑戦) immutable.jsを用いて同じ機能を実現する
