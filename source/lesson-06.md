@@ -1,6 +1,7 @@
 # Reducer合成
 
-実はこれまでのところReduxと言っても特別なライブラリを使っていたわけではありません。Reduxは考え方やアーキテクチャに相当するものです。とは言え、Reduxライブラリはそれを補助する機能を提供します。その一つがReducer合成です。
+Reduxライブラリには、storeを作る機能以外にも、
+Reducerを合成する機能があります。
 
 ## Reducerが一つの場合
 
@@ -69,12 +70,20 @@ const recuder = Redux.combineReducers({
 ## 具体例
 
 ```
-let state = {
-  counter: 0,
-  text: '',
+const counterReducer = (state = 0, action) => {
+  if (action.type === 'INCREMENT') {
+    return state + 1;
+  } else {
+    return state;
+  }
 };
-const counterReducer = (state, action) => { ... };
-const textReducer = (state, action) => { ... };
+const textReducer = (state = '', action) => {
+  if (action.type === 'SET_TEXT') {
+    return action.text;
+  } else {
+    return state;
+  }
+};
 const reducer = Redux.combineReducers({
   counter: counterReducer,
   text: textReducer,
@@ -85,6 +94,5 @@ const action2 = { type: 'SET_TEXT', text: 'abc' };
 
 ## 課題
 
-1. reducerを完成させる (undefinedの入力にも対応させる必要あり)
-2. 合成されたreducerの動作テストを行う
-3. (難問) 一つのactionで複数のサブreducerがstateを更新する例を作る
+1. 上記の具体例の動作を確認する
+2. (挑戦) 電卓アプリのreducerを分割してcombineReducersで合成して作る
