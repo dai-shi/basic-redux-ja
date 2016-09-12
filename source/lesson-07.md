@@ -1,68 +1,98 @@
-# Store
+# Reducer合成
 
-application stateを管理する場所がstoreです。storeは内部にreducerを持ち、actionを入力として受け取り、stateを出力します。
+Reduxライブラリには、storeを作る機能以外にも、
+Reducerを合成する機能があります。
 
-## storeを作成する
+## Reducerが一つの場合
+
+Reducerは一つの関数です。もし一つだけですべてのactionに対応しようとすると、
 
 ```
-const reducer = (state = {}, action) => {
-  if (action.type === 'INPUT_NUMBER') {
-    const newValue = state.inputValue * 10 + action.number;
-    return { ...state, inputValue: newValue };
+const reducer = (state, action) {
+  if (action.type === '...') {
+    return ...;
+  } else if (action.type === '...') {
+    return ...;
+  } else if (action.type === '...') {
+    return ...;
+  } else if (action.type === '...') {
+    return ...;
+  } else if (action.type === '...') {
+    return ...;
+  } else if (action.type === '...') {
+    return ...;
+  } else if (action.type === '...') {
+...
+...
+...
+```
+
+のようになってしまいます。これを避けるために、処理を分割する必要がでてきます。
+
+## combineReducers
+
+自力で分割することもできますが、Reduxライブラリは`combineReducers`という関数を提供してくれます。
+
+combineReducersを使うにはstateの形が少し限定されます。
+
+```
+const state = {
+  key1: ...,
+  key2: ...,
+  key3: ...,
+};
+```
+
+上記のようにstateがオブジェクトである必要があります。一般的にはstateは必ずしもオブジェクトである必要はなく、配列でも数値でもよいのです。
+
+このとき、`key1`, `key2`, `key3`の値、すなわちstateの一部分を更新するreducerをそれぞれ分けて作成します。
+
+```
+const reducer1 = ...;
+const reducer2 = ...;
+const reducer3 = ...;
+```
+
+`reducer1`がstateの`key1`の値を更新するreducerであるとします。他も同様です。この分割された3つのreducerを合成して一つにするには次のようにします。
+
+```
+const recuder = Redux.combineReducers({
+  key1: reducer1,
+  key2: reducer2,
+  key3: reducer3,
+});
+```
+
+`combineReducers`で合成されたreducerはこれまでと同ように使います。すなわち、stateとactionを渡すと新しいstateを返します。
+
+`reducer1`などのサブreducerはすべてのactionで呼ばれるため、自分のstateを変化させないactionが来た場合でもstateを(変化させないで)返す必要があります。
+
+## 具体例
+
+```
+const counterReducer = (state = 0, action) => {
+  if (action.type === 'INCREMENT') {
+    return state + 1;
   } else {
     return state;
   }
 };
-const store = Redux.createStore(reducer);
-```
-
-reducerを作成して、それをもとにstoreを作成します。
-
-reducerにはstateの初期値を設計する必要もあります。
-ES2015のdefault parametersを使うと簡単に書けます。
-
-## storeにactionを発行する
-
-上記のコードに続いて、
-
-```
-const action = { type: 'INPUT_NUMBER', number: 1 };
-store.dispatch(action);
-```
-
-とすることでactionを発行します。
-これによりreducerが呼ばれて、stateが更新されます。
-
-## storeからstateを取り出す
-
-上記のコードに続いて、
-
-```
-const state = store.getState();
-```
-
-とするとstateを取得できます。
-これはその時点のstateであり変化しないものなので、
-どこかに保存しておいても構いません。
-実際に、Redux DevToolsではstateを保存して再度プレイバックすることができます。
-
-## storeにリスナーを登録する
-
-stateを取得したいのは更新されたタイミングです。そこでリスナーを登録して更新を通知してもらう方法が用意されています。
-
-```
-store.subscribe(() => {
-  const state = store.getState();
-  console.log('got state', state);
+const textReducer = (state = '', action) => {
+  if (action.type === 'SET_TEXT') {
+    return action.text;
+  } else {
+    return state;
+  }
+};
+const reducer = Redux.combineReducers({
+  counter: counterReducer,
+  text: textReducer,
 });
-
-store.dispatch({ type: 'INPUT_NUMBER', number: 1 });
-store.dispatch({ type: 'INPUT_NUMBER', number: 2 });
-store.dispatch({ type: 'INPUT_NUMBER', number: 3 });
+const action1 = { type: 'INCREMENT' };
+const action2 = { type: 'SET_TEXT', text: 'abc' };
 ```
 
 ## 課題
 
-1. 上記コードの動作を確認する
-2. "+"ボタン用の機能を追加したreducerに拡張して動作を確認する
-3. (挑戦) ReactのコンポーネントでinputValueを表示する
+1. 上記の具体例の動作を確認する
+2. (挑戦) 電卓アプリのreducerを分割してcombineReducersで合成して作る
