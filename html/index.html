@@ -118,7 +118,7 @@
                 <a href="lesson-02.html">
             
                     
-                    Lesson 02: Immutability
+                    Lesson 02: Application state
             
                 </a>
             
@@ -131,7 +131,7 @@
                 <a href="lesson-03.html">
             
                     
-                    Lesson 03: Application state
+                    Lesson 03: Immutability
             
                 </a>
             
@@ -144,7 +144,7 @@
                 <a href="lesson-04.html">
             
                     
-                    Lesson 04: Reducer
+                    Lesson 04: Action
             
                 </a>
             
@@ -157,7 +157,7 @@
                 <a href="lesson-05.html">
             
                     
-                    Lesson 05: Action
+                    Lesson 05: Reducer
             
                 </a>
             
@@ -170,7 +170,7 @@
                 <a href="lesson-06.html">
             
                     
-                    Lesson 06: Reducer合成
+                    Lesson 06: Store
             
                 </a>
             
@@ -183,7 +183,7 @@
                 <a href="lesson-07.html">
             
                     
-                    Lesson 07: Store
+                    Lesson 07: Reducer合成
             
                 </a>
             
@@ -217,6 +217,32 @@
             
                     
                     Appendix 01: ES2015について
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="appendix-02.md">
+            
+                <span>
+            
+                    
+                    Appendix 02: react-reduxについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="appendix-03.md">
+            
+                <span>
+            
+                    
+                    Appendix 03: middlewareについて
             
                 </a>
             
@@ -269,7 +295,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="redux&#x57FA;&#x790E;">Redux&#x57FA;&#x790E;</h1><p>&#x672C;&#x6559;&#x6750;&#x306F;Redux&#x306E;&#x57FA;&#x790E;&#x3092;&#x5B66;&#x3076;&#x305F;&#x3081;&#x306E;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;</p><p>Redux&#x306F;immutability&#x3092;&#x57FA;&#x672C;&#x3068;&#x3057;&#x305F;application state&#x7BA1;&#x7406;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3067;&#x3001;React&#x306A;&#x3069;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#x3067;&#x3059;&#x304C;&#x3001;&#x305D;&#x306E;&#x4ED5;&#x7D44;&#x307F;&#x81EA;&#x4F53;&#x306F;React&#x306A;&#x3069;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;</p><p>Redux&#x306E;&#x57FA;&#x790E;&#x3068;&#x3057;&#x3066;&#x3001;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3068;&#x306F;&#x5207;&#x308A;&#x96E2;&#x3057;&#x3066;&#x305D;&#x306E;&#x52D5;&#x304D;&#x3092;&#x5B66;&#x3073;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;</p><p>&#x514D;&#x8CAC;: &#x672C;&#x6559;&#x6750;&#x306F;always-in-beta&#x3067;&#x3059;&#x3002;&#x9593;&#x9055;&#x3044;&#x306A;&#x3069;&#x304C;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+                                <h1 id="redux&#x57FA;&#x790E;">Redux&#x57FA;&#x790E;</h1><p>&#x672C;&#x6559;&#x6750;&#x306F;Redux&#x306E;&#x57FA;&#x790E;&#x3092;&#x5B66;&#x3076;&#x305F;&#x3081;&#x306E;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;</p><p>Redux&#x306F;immutability&#x3092;&#x57FA;&#x672C;&#x3068;&#x3057;&#x305F;application state&#x7BA1;&#x7406;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3067;&#x3001;React&#x306A;&#x3069;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#x3067;&#x3059;&#x304C;&#x3001;&#x305D;&#x306E;&#x4ED5;&#x7D44;&#x307F;&#x81EA;&#x4F53;&#x306F;React&#x306A;&#x3069;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;</p><p>React&#x3068;&#x306E;&#x9023;&#x643A;&#x3092;&#x610F;&#x8B58;&#x3057;&#x3064;&#x3064;&#x3001;Redux&#x81EA;&#x4F53;&#x306E;&#x57FA;&#x672C;&#x7684;&#x306A;&#x4ED5;&#x7D44;&#x307F;&#x3092;&#x5B66;&#x3073;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;</p><p>&#x514D;&#x8CAC;: &#x672C;&#x6559;&#x6750;&#x306F;always-in-beta&#x3067;&#x3059;&#x3002;&#x9593;&#x9055;&#x3044;&#x306A;&#x3069;&#x304C;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
                                 
                                 </section>
                             
@@ -308,7 +334,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Redux基礎","level":"1.1","depth":1,"next":{"title":"Lesson 01: 環境構築","level":"1.2","depth":1,"path":"lesson-01.md","ref":"lesson-01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2016-08-03T22:49:31.856Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-04T02:02:15.367Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redux基礎","level":"1.1","depth":1,"next":{"title":"Lesson 01: 環境構築","level":"1.2","depth":1,"path":"lesson-01.md","ref":"lesson-01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2016-09-04T22:33:55.187Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T22:34:11.825Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

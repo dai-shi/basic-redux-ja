@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Lesson 05: Action · GitBook</title>
+        <title>Lesson 05: Reducer · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -120,7 +120,7 @@
                 <a href="lesson-02.html">
             
                     
-                    Lesson 02: Immutability
+                    Lesson 02: Application state
             
                 </a>
             
@@ -133,7 +133,7 @@
                 <a href="lesson-03.html">
             
                     
-                    Lesson 03: Application state
+                    Lesson 03: Immutability
             
                 </a>
             
@@ -146,7 +146,7 @@
                 <a href="lesson-04.html">
             
                     
-                    Lesson 04: Reducer
+                    Lesson 04: Action
             
                 </a>
             
@@ -159,7 +159,7 @@
                 <a href="lesson-05.html">
             
                     
-                    Lesson 05: Action
+                    Lesson 05: Reducer
             
                 </a>
             
@@ -172,7 +172,7 @@
                 <a href="lesson-06.html">
             
                     
-                    Lesson 06: Reducer合成
+                    Lesson 06: Store
             
                 </a>
             
@@ -185,7 +185,7 @@
                 <a href="lesson-07.html">
             
                     
-                    Lesson 07: Store
+                    Lesson 07: Reducer合成
             
                 </a>
             
@@ -226,6 +226,32 @@
             
         </li>
     
+        <li class="chapter " data-level="2.2" data-path="appendix-02.md">
+            
+                <span>
+            
+                    
+                    Appendix 02: react-reduxについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="appendix-03.md">
+            
+                <span>
+            
+                    
+                    Appendix 03: middlewareについて
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -256,7 +282,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Lesson 05: Action</a>
+        <a href="." >Lesson 05: Reducer</a>
     </h1>
 </div>
 
@@ -271,38 +297,81 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="action">Action</h1><p>Reducer&#x306E;&#x5165;&#x529B;&#x306F;state&#x3068;action&#x3067;&#x3059;&#x3002;action&#x306F;state&#x3092;&#x5909;&#x5316;&#x3055;&#x305B;&#x308B;&#x64CD;&#x4F5C;&#x306B;&#x76F8;&#x5F53;&#x3057;&#x307E;&#x3059;&#x3002;
-Redux&#x3067;&#x306F;action&#x306F;type&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3064;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3042;&#x308B;&#x3068;&#x3044;&#x3046;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;</p><h2 id="action&#x306E;&#x4F8B;">action&#x306E;&#x4F8B;</h2><p>&#x69D8;&#x3005;&#x306A;action&#x306E;&#x4F8B;&#x3092;&#x898B;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;&#x3053;&#x3053;&#x306B;&#x3042;&#x308B;&#x3082;&#x306E;&#x306F;&#x5178;&#x578B;&#x7684;&#x306A;&#x3082;&#x306E;&#x3060;&#x3051;&#x3067;&#x3042;&#x308A;&#x3001;&#x767A;&#x60F3;&#x3092;&#x8C4A;&#x304B;&#x306B;&#x3059;&#x308C;&#x3070;&#x3001;&#x3055;&#x3089;&#x306B;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>const action01 = { type: &apos;INCREMENT&apos; };
-const action02 = { type: &apos;COUNT_UP&apos;, count: 3 };
-const action03 = { type: &apos;CHANGE_TEXT&apos;, text: &apos;foo&apos; };
-const action04 = { type: &apos;CLICK_POINT&apos;, x: 321, y: 123 };
-const action05 = { type: &apos;UPDATE_DOCUMENT&apos;, doc: { title: &apos;abc&apos;, content: &apos;...&apos; };</code></pre>
-<h2 id="reducer&#x518D;&#x3073;">Reducer&#x518D;&#x3073;</h2><p>COUNT_UP&#x306B;&#x3082;&#x5BFE;&#x5FDC;&#x3055;&#x305B;&#x305F;reducer&#x3092;&#x898B;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;</p><pre><code>let state = { counter: 0 };
-const action = { type: &apos;COUNT_UP&apos;, count: 3 };
-
-const reducer = (state, action) =&gt; {
-  if (action.type === &apos;INCREMENT&apos;) {
-    return Object.assign({}, state, { counter: state.counter + 1 });
-  } else if (action.type === &apos;COUNT_UP&apos;) {
-    return Object.assign({}, state, { counter: state.counter + action.count });
+                                <h1 id="reducer">Reducer</h1><p>Reducer&#x306F;Redux&#x306E;&#x540D;&#x524D;&#x306E;&#x3082;&#x3068;&#x306B;&#x3082;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3082;&#x306E;&#x3067;&#x3059;&#x304C;&#x3001;
+&#x305D;&#x3082;&#x305D;&#x3082;reduce&#x3068;&#x3044;&#x3046;&#x306E;&#x306F;&#x95A2;&#x6570;&#x578B;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x53E4;&#x304F;&#x304B;&#x3089;&#x3042;&#x308B;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;
+MapReduce&#x306A;&#x3069;&#x304C;&#x6709;&#x540D;&#x3067;&#x3059;&#x3002;</p><p>Redux&#x306B;&#x304A;&#x3051;&#x308B;reducer&#x306F;state&#x3068;action&#x3092;&#x5165;&#x529B;&#x3068;&#x3057;&#x3001;&#x65B0;&#x3057;&#x3044;state&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3067;&#x3059;&#x3002;
+&#x3053;&#x306E;&#x3068;&#x304D;&#x306E;state&#x306F;&#x3059;&#x3079;&#x3066;immutability&#x306E;&#x5236;&#x7D04;&#x306E;&#x3082;&#x3068;&#x3067;&#x6271;&#x308F;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x307E;&#x305B;&#x3093;&#x3002;
+action&#x306F;state&#x3092;&#x5909;&#x5316;&#x3055;&#x305B;&#x308B;&#x64CD;&#x4F5C;&#x306B;&#x76F8;&#x5F53;&#x3057;&#x307E;&#x3059;&#x3002;</p><h2 id="&#x96FB;&#x5353;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x4F8B;">&#x96FB;&#x5353;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x4F8B;</h2><pre><code>let state = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+};</code></pre>
+<p>&#x3068;&#x3044;&#x3046;&#x72B6;&#x614B;&#x3092;&#x8003;&#x3048;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;&#x3053;&#x3053;&#x3067;&#x3001;1&#x306E;&#x30DC;&#x30BF;&#x30F3;&#x3092;&#x62BC;&#x3057;&#x305F;action&#x3092;&#x8003;&#x3048;&#x307E;&#x3059;&#x3002;</p><pre><code>const action1 = { type: &apos;INPUT_NUMBER&apos;, number: 1 };</code></pre>
+<p><code>reducer</code>&#x306B;&#x671F;&#x5F85;&#x3059;&#x308B;&#x52D5;&#x4F5C;&#x306F;&#x4E0B;&#x8A18;&#x3067;&#x3059;&#x3002;</p><pre><code>state = reducer(state, action1);
+// state is { inputValue: 1, resultValue: 0, showingResult: false }
+state = reducer(state, action1);
+// state is { inputValue: 11, resultValue: 0, showingResult: false }</code></pre>
+<p>&#x96FB;&#x5353;&#x306E;&#x52D5;&#x304D;&#x3092;&#x8003;&#x3048;&#x306A;&#x304C;&#x3089;&#x9032;&#x3081;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;</p><pre><code>const action0 = { type: &apos;INPUT_NUMBER&apos;, number: 0 };</code></pre>
+<p>&#x3068;&#x3044;&#x3046;action&#x3082;&#x8FFD;&#x52A0;&#x3067;&#x8003;&#x3048;&#x307E;&#x3059;&#x3002;&#x7D9A;&#x3051;&#x3066;&#x3001;reducer&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3068;&#x3001;</p><pre><code>state = reducer(state, action0);
+// state is { inputValue: 110, resultValue: 0, showingResult: false }
+state = reducer(state, action0);
+// state is { inputValue: 1100, resultValue: 0, showingResult: false }</code></pre>
+<p>&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#x3068;&#x671F;&#x5F85;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p><p>&#x3053;&#x308C;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;reducer&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>const reducer = (state, action) =&gt; {
+  if (action.type === &apos;INPUT_NUMBER&apos;) {
+    const newValue = state.inputValue * 10 + action.number;
+    return { ...state, inputValue: newValue };
   } else {
     return state;
   }
+};</code></pre>
+<p>&#x3053;&#x308C;&#x306F;&#x307E;&#x3060;result&#x3092;&#x8003;&#x616E;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x306E;&#x3067;&#x3001;&#x6A5F;&#x80FD;&#x3068;&#x3057;&#x3066;&#x306F;&#x4E0D;&#x5341;&#x5206;&#x3067;&#x3059;&#x304C;&#x3001;
+&#x4E0A;&#x8A18;&#x306E;&#x671F;&#x5F85;&#x3059;&#x308B;&#x52D5;&#x4F5C;&#x306F;&#x6E80;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p><h2 id="&#x30C6;&#x30B9;&#x30C8;">&#x30C6;&#x30B9;&#x30C8;</h2><p>reducer&#x304C;&#x6B63;&#x3057;&#x304F;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308B;&#x304B;&#x306F;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x4E0A;&#x8A18;&#x306E;&#x671F;&#x5F85;&#x3059;&#x308B;&#x52D5;&#x4F5C;&#x306B;&#x3064;&#x3044;&#x3066;&#x7D50;&#x679C;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x8ABF;&#x3079;&#x307E;&#x3059;&#x3002;
+&#x5B9F;&#x969B;&#x306F;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x7528;&#x3044;&#x307E;&#x3059;&#x304C;&#x3001;&#x4ECA;&#x56DE;&#x306F;console.log&#x3067;&#x5224;&#x5B9A;&#x7D50;&#x679C;&#x3092;&#x8868;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p><pre><code>let state = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
 };
+const action0 = { type: &apos;INPUT_NUMBER&apos;, number: 0 };
+const action1 = { type: &apos;INPUT_NUMBER&apos;, number: 1 };
 
-state = reducer(state, action);
-console.log(state);</code></pre>
-<h2 id="action-creator">Action Creator</h2><p>Action&#x3092;&#x4F5C;&#x308B;&#x95A2;&#x6570;&#x3092;Action Creator&#x3068;&#x3057;&#x3066;&#x7528;&#x610F;&#x3059;&#x308B;&#x5834;&#x5408;&#x3082;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x5FC5;&#x9808;&#x3067;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;&#x5C0F;&#x898F;&#x6A21;&#x95A2;&#x767A;&#x3067;&#x306F;&#x306A;&#x3044;&#x65B9;&#x304C;&#x5206;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</p><p>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x3066;action&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3067;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x4E0B;&#x8A18;&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>const countUp = (count) =&gt; ({
-  type: &apos;COUNT_UP&apos;,
-  count,
-});
+state = reducer(state, action0);
+if (state.inputValue === 0 &amp;&amp; state.resultValue === 0 &amp;&amp; state.showingResult === false) {
+  console.log(&apos;OK&apos;);
+} else {
+  console.log(&apos;NG&apos;);
+}
 
-console.log(countUp(3));</code></pre>
-<h2 id="&#x8AB2;&#x984C;">&#x8AB2;&#x984C;</h2><ol><li>&#x300C;&#x3044;&#x3044;&#x306D;&#x300D;&#x30DC;&#x30BF;&#x30F3;&#x3092;&#x62BC;&#x3057;&#x305F;&#x969B;&#x306E;action&#x3092;&#x5275;&#x4F5C;&#x3057;&#x3066;&#x307F;&#x308B;
+state = reducer(state, action1);
+if (state.inputValue === 1 &amp;&amp; state.resultValue === 0 &amp;&amp; state.showingResult === false) {
+  console.log(&apos;OK&apos;);
+} else {
+  console.log(&apos;NG&apos;);
+}
+
+state = reducer(state, action1);
+if (state.inputValue === 11 &amp;&amp; state.resultValue === 0 &amp;&amp; state.showingResult === false) {
+  console.log(&apos;OK&apos;);
+} else {
+  console.log(&apos;NG&apos;);
+}
+
+state = reducer(state, action0);
+if (state.inputValue === 110 &amp;&amp; state.resultValue === 0 &amp;&amp; state.showingResult === false) {
+  console.log(&apos;OK&apos;);
+} else {
+  console.log(&apos;NG&apos;);
+}</code></pre>
+<p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3068;&#x6B63;&#x3057;&#x304F;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308C;&#x3070;&#x3001;OK&#x3068;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x306F;&#x305A;&#x3067;&#x3059;&#x3002;</p><p>&#x307E;&#x305F;&#x3001;immutability&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p><pre><code>const state = ...;
+const action = ...;
+deepFreeze(state);
+deepFreeze(action);
+state = reducer(state, action);</code></pre>
+<p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3068;reducer&#x304C;state&#x3084;action&#x3092;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3066;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p><h2 id="&#x8AB2;&#x984C;">&#x8AB2;&#x984C;</h2><ol><li>&quot;+&quot;&#x30DC;&#x30BF;&#x30F3;&#x306E;&#x671F;&#x5F85;&#x3059;&#x308B;&#x52D5;&#x4F5C;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x3057;&#x3066;&#x66F8;&#x304F;
 </li>
-<li>(&#x96E3;&#x554F;) state&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x4E0A;&#x8A18;action&#x3092;&#x51E6;&#x7406;&#x3059;&#x308B;reducer&#x3092;&#x66F8;&#x304F;
+<li>&#x4E0A;&#x8A18;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x901A;&#x308B;&#x3088;&#x3046;&#x306B;reducer&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;
 </li>
-<li>(&#x96E3;&#x554F;) reducer&#x306E;&#x52D5;&#x4F5C;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x3059;&#x308B;
+<li>(&#x6311;&#x6226;) immutable.js&#x3092;&#x7528;&#x3044;&#x3066;&#x540C;&#x3058;&#x6A5F;&#x80FD;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;
 </li></ol>
 
                                 
@@ -331,12 +400,12 @@ console.log(countUp(3));</code></pre>
 
             
                 
-                <a href="lesson-04.html" class="navigation navigation-prev " aria-label="Previous page: Lesson 04: Reducer">
+                <a href="lesson-04.html" class="navigation navigation-prev " aria-label="Previous page: Lesson 04: Action">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="lesson-06.html" class="navigation navigation-next " aria-label="Next page: Lesson 06: Reducer合成">
+                <a href="lesson-06.html" class="navigation navigation-next " aria-label="Next page: Lesson 06: Store">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -347,7 +416,7 @@ console.log(countUp(3));</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Action","level":"1.6","depth":1,"next":{"title":"Lesson 06: Reducer合成","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Reducer","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-09-03T06:57:24.051Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-04T02:02:15.367Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"next":{"title":"Lesson 06: Store","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Action","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-09-10T08:19:30.018Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T22:34:11.825Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
