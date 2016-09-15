@@ -318,8 +318,7 @@ state = reducer(state, action0);
 // state is { inputValue: 1100, resultValue: 0, showingResult: false }</code></pre>
 <p>&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#x3068;&#x671F;&#x5F85;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p><p>&#x3053;&#x308C;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;reducer&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>const reducer = (state, action) =&gt; {
   if (action.type === &apos;INPUT_NUMBER&apos;) {
-    const newValue = state.inputValue * 10 + action.number;
-    return { ...state, inputValue: newValue };
+    return { ...state, inputValue: state.inputValue * 10 + action.number };
   } else {
     return state;
   }
@@ -363,10 +362,13 @@ if (state.inputValue === 110 &amp;&amp; state.resultValue === 0 &amp;&amp; state
   console.log(&apos;NG&apos;);
 }</code></pre>
 <p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3068;&#x6B63;&#x3057;&#x304F;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308C;&#x3070;&#x3001;OK&#x3068;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x306F;&#x305A;&#x3067;&#x3059;&#x3002;</p><p>&#x307E;&#x305F;&#x3001;immutability&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p><pre><code>const state = ...;
-const action = ...;
+const action0 = ...;
+const action1 = ...;
 deepFreeze(state);
-deepFreeze(action);
-state = reducer(state, action);</code></pre>
+deepFreeze(action0);
+deepFreeze(action1);
+state = reducer(state, action0);
+state = reducer(state, action1);</code></pre>
 <p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3068;reducer&#x304C;state&#x3084;action&#x3092;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3066;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p><h2 id="&#x8AB2;&#x984C;">&#x8AB2;&#x984C;</h2><ol><li>&quot;+&quot;&#x30DC;&#x30BF;&#x30F3;&#x306E;&#x671F;&#x5F85;&#x3059;&#x308B;&#x52D5;&#x4F5C;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x3057;&#x3066;&#x66F8;&#x304F;
 </li>
 <li>&#x4E0A;&#x8A18;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x901A;&#x308B;&#x3088;&#x3046;&#x306B;reducer&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;
@@ -416,7 +418,7 @@ state = reducer(state, action);</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"next":{"title":"Lesson 06: Store","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Action","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-09-10T08:19:30.018Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T22:34:11.825Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"next":{"title":"Lesson 06: Store","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Action","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-09-15T00:23:00.724Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-15T22:47:29.088Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

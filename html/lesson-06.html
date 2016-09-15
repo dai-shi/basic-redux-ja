@@ -297,10 +297,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="store">Store</h1><p>application state&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x5834;&#x6240;&#x304C;store&#x3067;&#x3059;&#x3002;store&#x306F;&#x5185;&#x90E8;&#x306B;reducer&#x3092;&#x6301;&#x3061;&#x3001;action&#x3092;&#x5165;&#x529B;&#x3068;&#x3057;&#x3066;&#x53D7;&#x3051;&#x53D6;&#x308A;&#x3001;state&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</p><h2 id="store&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;">store&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;</h2><pre><code>const reducer = (state = {}, action) =&gt; {
+                                <h1 id="store">Store</h1><p>application state&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x5834;&#x6240;&#x304C;store&#x3067;&#x3059;&#x3002;store&#x306F;&#x5185;&#x90E8;&#x306B;reducer&#x3092;&#x6301;&#x3061;&#x3001;action&#x3092;&#x5165;&#x529B;&#x3068;&#x3057;&#x3066;&#x53D7;&#x3051;&#x53D6;&#x308A;&#x3001;state&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</p><h2 id="store&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;">store&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;</h2><pre><code>const initialState = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+};
+const reducer = (state = initialState, action) =&gt; {
   if (action.type === &apos;INPUT_NUMBER&apos;) {
-    const newValue = state.inputValue * 10 + action.number;
-    return { ...state, inputValue: newValue };
+    return { ...state, inputValue: state.inputValue * 10 + action.number; };
   } else {
     return state;
   }
@@ -322,6 +326,11 @@ store.dispatch(action);</code></pre>
 store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 1 });
 store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 2 });
 store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 3 });</code></pre>
+<p>React&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x4F8B;&#x3048;&#x3070;&#x5358;&#x7D14;&#x306B;&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>let globalState = {}; // not suitable for real development
+store.subscribe(() =&gt; {
+  globalState = store.getState();
+  render(); // assuming we defined this to render all React components
+});</code></pre>
 <h2 id="&#x8AB2;&#x984C;">&#x8AB2;&#x984C;</h2><ol><li>&#x4E0A;&#x8A18;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;
 </li>
 <li>&quot;+&quot;&#x30DC;&#x30BF;&#x30F3;&#x7528;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x8FFD;&#x52A0;&#x3057;&#x305F;reducer&#x306B;&#x62E1;&#x5F35;&#x3057;&#x3066;&#x52D5;&#x4F5C;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;
@@ -371,7 +380,7 @@ store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 3 });</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 06: Store","level":"1.7","depth":1,"next":{"title":"Lesson 07: Reducer合成","level":"1.8","depth":1,"path":"lesson-07.md","ref":"lesson-07.md","articles":[]},"previous":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"path":"lesson-05.md","ref":"lesson-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-06.md","mtime":"2016-09-11T13:50:15.655Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T22:34:11.825Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 06: Store","level":"1.7","depth":1,"next":{"title":"Lesson 07: Reducer合成","level":"1.8","depth":1,"path":"lesson-07.md","ref":"lesson-07.md","articles":[]},"previous":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"path":"lesson-05.md","ref":"lesson-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-06.md","mtime":"2016-09-15T00:39:29.314Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-15T22:47:29.088Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
