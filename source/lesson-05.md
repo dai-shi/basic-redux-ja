@@ -55,8 +55,7 @@ state = reducer(state, action0);
 ```
 const reducer = (state, action) => {
   if (action.type === 'INPUT_NUMBER') {
-    const newValue = state.inputValue * 10 + action.number;
-    return { ...state, inputValue: newValue };
+    return { ...state, inputValue: state.inputValue * 10 + action.number };
   } else {
     return state;
   }
@@ -116,10 +115,13 @@ if (state.inputValue === 110 && state.resultValue === 0 && state.showingResult =
 
 ```
 const state = ...;
-const action = ...;
+const action0 = ...;
+const action1 = ...;
 deepFreeze(state);
-deepFreeze(action);
-state = reducer(state, action);
+deepFreeze(action0);
+deepFreeze(action1);
+state = reducer(state, action0);
+state = reducer(state, action1);
 ```
 
 このようにするとreducerがstateやactionを書き換えていないことを確認できます。

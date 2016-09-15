@@ -5,10 +5,14 @@ application stateを管理する場所がstoreです。storeは内部にreducer�
 ## storeを作成する
 
 ```
-const reducer = (state = {}, action) => {
+const initialState = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+};
+const reducer = (state = initialState, action) => {
   if (action.type === 'INPUT_NUMBER') {
-    const newValue = state.inputValue * 10 + action.number;
-    return { ...state, inputValue: newValue };
+    return { ...state, inputValue: state.inputValue * 10 + action.number; };
   } else {
     return state;
   }
@@ -59,6 +63,16 @@ store.subscribe(() => {
 store.dispatch({ type: 'INPUT_NUMBER', number: 1 });
 store.dispatch({ type: 'INPUT_NUMBER', number: 2 });
 store.dispatch({ type: 'INPUT_NUMBER', number: 3 });
+```
+
+Reactの場合は、例えば単純には次のようにすることになります。
+
+```
+let globalState = {}; // not suitable for real development
+store.subscribe(() => {
+  globalState = store.getState();
+  render(); // assuming we defined this to render all React components
+});
 ```
 
 ## 課題

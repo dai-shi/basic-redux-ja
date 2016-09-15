@@ -66,10 +66,10 @@ JavaScriptでは`===`で一致性を比較できます。(個別に新規で同�
 ```
 const obj = { a: 1, b: 2 };
 const obj2 = Object.assign({}, obj, { a: 3 });
-console.log(obj === obj2);
+console.log(obj === obj2); // this is false
 const obj3 = obj;
 obj3.a = 3;
-console.log(obj === obj3);
+console.log(obj === obj3); // this is true
 ```
 
 オブジェクトを変更するときに新しいオブジェクトを作るのですから当然ですが、mutableを許容する場合は、オブジェクトの比較には[deepEqual](https://github.com/substack/node-deep-equal)のようなものを使うことが必要になります。これは再帰的な処理であり一般的に重いです。
@@ -119,7 +119,7 @@ const obj = Immutable.Map({ a: 1, b: 2 });
 const obj2 = obj.set('a', 3);
 console.log(obj.toJS());
 console.log(obj2.toJS());
-console.log(obj === obj2);
+console.log(obj === obj2); // this is false
 ```
 
 ```

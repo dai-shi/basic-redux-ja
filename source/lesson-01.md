@@ -63,3 +63,4 @@ render();
 
 - ブラウザをリロードすると設定が戻ってしまう場合があるので、その場合は上記手順をやり直す
 - 左上のロゴマークを押してKeyboard Shortcutsを参照できる
+- [jshintの設定のヒント](https://github.com/jsbin/jsbin/issues/2792#issuecomment-235769959)
