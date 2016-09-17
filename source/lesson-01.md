@@ -31,6 +31,8 @@ JS Binを使います。
 下記をJavaScriptエリアに入力して、サンプルアプリの骨組みを準備しましょう。
 
 ```
+console.clear(); // この行は常に残しておくとよい
+
 const NumBtn = ({ n }) => (
   <button>{n}</button>
 );
