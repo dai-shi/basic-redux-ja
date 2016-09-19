@@ -95,4 +95,3 @@ const action2 = { type: 'SET_TEXT', text: 'abc' };
 ## 課題
 
 1. 上記の具体例の動作を確認する
-2. (挑戦) 電卓アプリのreducerを分割してcombineReducersで合成して作る
