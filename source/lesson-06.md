@@ -22,7 +22,7 @@ const store = Redux.createStore(reducer);
 
 reducerを作成して、それをもとにstoreを作成します。
 
-reducerにはstateの初期値を設計する必要もあります。
+reducerにはstateの初期値を設定する必要もあります。
 ES2015のdefault parametersを使うと簡単に書けます。
 
 ## storeにactionを発行する

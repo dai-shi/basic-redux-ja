@@ -20,6 +20,15 @@ let state = {
 };
 ```
 
+入力中の数値をinputValueに保持し、
+計算結果の数値をresultValueに保持し、
+showingResultに計算結果を表示するかのフラグを保持します。
+たとえば、"1"を入力するとinputValueは1になり、
+さらに"2"を入力するとinputValueは12になります。
+この状態で"+"を押すとresultValueに12が入りinputValueは0に戻ります。
+続いて"3"を入力するとinputValueは3になり、resultValueは12のままです。
+最後にもう一度"+"を押すとresultValueは15になり、"12+3"が計算できたことになります。
+
 他にも様々な実現形態のstateが考えられます。ポイントはアプリに一つの集中したstateであることです。Single source of truthとも言われます。
 
 ## なぜ一箇所で管理するか

@@ -136,5 +136,5 @@ console.log(arr4.toJS());
 ## 課題
 
 1. 上記例を実行して動きを理解する
-2. 電卓アプリのstateを書き換えてみる(immutability制約のもとで)
-3. (挑戦) 上記のstateを書き換えを関数化する(複数の方法あり)
+2. 前のLessonにあった電卓アプリのstateを書き換えてみる(immutability制約のもとで) 例えば、inputValueに3を加えたstateを作る
+3. (挑戦) 上記のstateを書き換えを関数化する(複数の方法あり) 例えば、inputValueに任意の整数を加えたstateを返す関数を作る
