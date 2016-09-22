@@ -1,0 +1,379 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Appendix 03: middlewareについて · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="appendix-02.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Redux基礎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="lesson-01.html">
+            
+                <a href="lesson-01.html">
+            
+                    
+                    Lesson 01: 環境構築
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="lesson-02.html">
+            
+                <a href="lesson-02.html">
+            
+                    
+                    Lesson 02: Application state
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="lesson-03.html">
+            
+                <a href="lesson-03.html">
+            
+                    
+                    Lesson 03: Immutability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="lesson-04.html">
+            
+                <a href="lesson-04.html">
+            
+                    
+                    Lesson 04: Action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="lesson-05.html">
+            
+                <a href="lesson-05.html">
+            
+                    
+                    Lesson 05: Reducer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="lesson-06.html">
+            
+                <a href="lesson-06.html">
+            
+                    
+                    Lesson 06: Store
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="lesson-07.html">
+            
+                <a href="lesson-07.html">
+            
+                    
+                    Lesson 07: Reducer合成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="lesson-08.html">
+            
+                <a href="lesson-08.html">
+            
+                    
+                    Lesson 08: 総合課題
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="appendix-01.html">
+            
+                <a href="appendix-01.html">
+            
+                    
+                    Appendix 01: ES2015について
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="appendix-02.html">
+            
+                <a href="appendix-02.html">
+            
+                    
+                    Appendix 02: react-reduxについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="appendix-03.html">
+            
+                <a href="appendix-03.html">
+            
+                    
+                    Appendix 03: middlewareについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Appendix 03: middlewareについて</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="middleware&#x306B;&#x3064;&#x3044;&#x3066;">middleware&#x306B;&#x3064;&#x3044;&#x3066;</h1><p>redux&#x306E;&#x9B45;&#x529B;&#x306E;&#x4E00;&#x3064;&#x306B;middleware&#x306B;&#x3088;&#x308B;&#x6A5F;&#x80FD;&#x62E1;&#x5F35;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
+middleware&#x306F;&#x3001;reducer&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x524D;&#x306B;action&#x3092;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x305F;&#x308A;&#x3001;
+action&#x3092;&#x767A;&#x884C;&#x3057;&#x305F;&#x308A;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+middleware&#x306E;&#x9069;&#x7528;&#x306B;&#x306F;<a href="http://redux.js.org/docs/api/applyMiddleware.html" target="_blank">applyMiddleware</a>&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;</p><p>middleware&#x306F;&#x81EA;&#x5206;&#x3067;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x304C;&#x3001;
+&#x65E2;&#x306B;&#x69D8;&#x3005;&#x306A;&#x3082;&#x306E;&#x304C;&#x516C;&#x958B;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#x3001;&#x518D;&#x5229;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p><p>Redux&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306B;&#x306F;Logging&#x306E;middleware&#x306E;&#x4F8B;&#x304C;&#x7D39;&#x4ECB;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
+middleware&#x3067;&#x591A;&#x304F;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3067;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308B;&#x306E;&#x306F;&#x3001;API&#x547C;&#x3073;&#x51FA;&#x3057;&#x306A;&#x3069;&#x306E;&#x540C;&#x671F;&#x51E6;&#x7406;&#x3067;&#x3042;&#x308A;&#x3001;
+&#x3053;&#x308C;&#x306B;&#x306F;&#x3001;<a href="https://github.com/gaearon/redux-thunk" target="_blank">redux-thunk</a>&#x3084;<a href="https://github.com/yelouafi/redux-saga" target="_blank">redux-saga</a>&#x304C;&#x6709;&#x540D;&#x3067;&#x3059;&#x3002;</p><p>[<a href="http://redux.js.org/docs/advanced/Middleware.html" target="_blank">http://redux.js.org/docs/advanced/Middleware.html</a>]</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="appendix-02.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Appendix 02: react-reduxについて">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Appendix 03: middlewareについて","level":"2.3","depth":1,"previous":{"title":"Appendix 02: react-reduxについて","level":"2.2","depth":1,"path":"appendix-02.md","ref":"appendix-02.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"appendix-03.md","mtime":"2016-09-19T07:05:16.178Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-20T22:23:08.458Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
