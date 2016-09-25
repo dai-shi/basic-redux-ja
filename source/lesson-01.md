@@ -28,38 +28,87 @@ JS Binを使います。
 
 ## サンプルアプリのコード
 
-下記をJavaScriptエリアに入力して、サンプルアプリの骨組みを準備しましょう。
+下記をJavaScriptエリアに入力して、サンプルアプリの基本版を準備しましょう。
 
 ```
 console.clear(); // この行は常に残しておくとよい
 
-const NumBtn = ({ n }) => (
-  <button>{n}</button>
+const initialState = {
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+};
+const reducer = (state = initialState, action) => {
+  if (action.type === 'INPUT_NUMBER') {
+    return {
+      ...state,
+      inputValue: state.inputValue * 10 + action.number,
+      showingResult: false,
+    };
+  } else if (action.type === 'PLUS') {
+    return {
+      ...state,
+      inputValue: 0,
+      resultValue: state.resultValue + state.inputValue,
+      showingResult: true,
+    };
+  } else {
+    return state;
+  }
+};
+const store = Redux.createStore(reducer);
+
+const NumBtn = ({ n, onClick }) => (
+  <button onClick={onClick}>{n}</button>
 );
-const PlusBtn = () => (
-  <button>+</button>
+
+const PlusBtn = ({ onClick }) => (
+  <button onClick={onClick}>+</button>
 );
-const Result = () => (
+
+const Result = ({ result }) => (
   <div>
-    結果: <span></span>
+    結果: <span>{result}</span>
   </div>
 );
-const App = () => (
-  <div>
-    <div><NumBtn n={1} /><NumBtn n={2} /><NumBtn n={3} /></div>
-    <div><NumBtn n={4} /><NumBtn n={5} /><NumBtn n={6} /></div>
-    <div><NumBtn n={7} /><NumBtn n={8} /><NumBtn n={9} /></div>
-    <div><NumBtn n={0} /><PlusBtn /></div>
-    <Result />
-  </div>
-);
-const render = () => ReactDOM.render(<App />, document.getElementById('app'));
+
+const App = ({ store }) => {
+  const state = store.getState();
+  const result = state.showingResult ? state.resultValue : state.inputValue;
+  const onNumClick = (number) => () => store.dispatch({ type: INPUT_NUMBER, number });
+  return (
+    <div>
+      <div>
+        <NumBtn n={1} onClick={onNumClick(1)} />
+        <NumBtn n={2} onClick={onNumClick(2)} />
+        <NumBtn n={3} onClick={onNumClick(3)} />
+      </div>
+      <div>
+        <NumBtn n={4} onClick={onNumClick(4)} />
+        <NumBtn n={5} onClick={onNumClick(5)} />
+        <NumBtn n={6} onClick={onNumClick(6)} />
+      </div>
+      <div>
+        <NumBtn n={7} onClick={onNumClick(7)} />
+        <NumBtn n={8} onClick={onNumClick(8)} />
+        <NumBtn n={9} onClick={onNumClick(9)} />
+      </div>
+      <div>
+        <NumBtn n={0} onClick={onNumClick(0)} />
+        <PlusBtn onClick={() => store.dispatch({ type: 'PLUS' })} />
+      </div>
+        <Result result={result}/>
+    </div>
+  );
+};
+
+const render = () => ReactDOM.render(<App store={store} />, document.getElementById('app'));
 render();
+store.subscribe(render);
 ```
 
-加算しかできない電卓アプリを考えてください。
-上記はReactで表示部分を作ったものです。
-本教材ではこのアプリの機能部分をReduxで作っていきます。
+上記はReact/Reduxで加算しかできない電卓アプリを作ったものです。
+本教材ではこのアプリの機能を解説、拡張していきます。
 
 ## 補足
 

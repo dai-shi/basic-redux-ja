@@ -2,8 +2,9 @@
 
 本教材はReduxの基礎を学ぶためのものです。
 
-Reduxはimmutabilityを基本としたapplication state管理ライブラリで、Reactなどのレンダリングエンジンと組み合わせて使われることが多いですが、その仕組み自体はReactなどに依存しません。
+Reduxはimmutability(誤解を恐れず言うのであれば一度作成したobjectを書き換えないこと)を基本としたapplication state管理の概念およびライブラリです。
+ReduxはReactと組み合わせて使われることが知られていますが、その概念やライブラリはReactとは独立したものです。ReduxをReact以外と組み合わせている例もあります。
 
-Reactとの連携を意識しつつ、Redux自体の基本的な仕組みを学びましょう。
+Reactとの連携ではreact-reduxというライブラリを使うことが多いですが、本教材ではそれは使わずに基礎を学ぶことに注力します。
 
 免責: 本教材はalways-in-betaです。間違いなどが含まれている可能性があります。
