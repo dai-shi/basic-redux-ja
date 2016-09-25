@@ -1,70 +1,72 @@
-# Application state
+# ES2015について
 
-Reduxはapplication stateを管理するための仕組みを提供します。
-application stateとはアプリケーションの状態であり、
-単一のデータ構造で表現します。
-つまり、JavaScript内で状態を保持する変数を分散して配置せず、
-一箇所に集中して管理します。
+Reduxでコーディグする際はES2015を使うことがほぼ前提となります。もちろん、ES5でも書けますが、ReduxのチュートリアルでもES2015を想定しています。pure functionを書くのに便利になっているためです。ES2015を網羅的に解説するのは多すぎますが、よく使う文法について紹介します。
 
-## application stateの例
+## constとlet
 
-例えば、電卓アプリでの状態は、入力中の数字と計算結果の数字があります。
-また、どちらの数字を表示しているかのフラグがあります。
-これを実現する一例として、下記のようなstateが考えられます。
+ES2015では`var`は基本的に使わず、代わりに`const`と`let`を使うことが推奨されます。
+ 
+`const`は再代入しない変数の宣言に用います。`let`は再代入が必要な変数の宣言に用います。再代入とimmutabilityは別物ですので注意が必要です。
 
 ```
-let state = {
-  inputValue: 0,
-  resultValue: 0,
-  showingResult: false,
-};
+const x = 1;
+let y = 2;
+y = 3;
+
+const z = { a: 4, b: 5 };
+z.a = 6;
 ```
 
-入力中の数値をinputValueに保持し、
-計算結果の数値をresultValueに保持し、
-showingResultに計算結果を表示するかのフラグを保持します。
-たとえば、"1"を入力するとinputValueは1になり、
-さらに"2"を入力するとinputValueは12になります。
-この状態で"+"を押すとresultValueに12が入りinputValueは0に戻ります。
-続いて"3"を入力するとinputValueは3になり、resultValueは12のままです。
-最後にもう一度"+"を押すとresultValueは15になり、"12+3"が計算できたことになります。
+## object shorthand
 
-他にも様々な実現形態のstateが考えられます。ポイントはアプリに一つの集中したstateであることです。Single source of truthとも言われます。
-
-## なぜ一箇所で管理するか
-
-Reactの場合は、すべてのコンポーネントがstatelessになります。
-副作用がまったくないため、動作の予測がしやすくなります。
-また、stateを切り替えるだけでViewの動作を確認することができます。
-Redux DevToolsを使うとタイムマシン風のリプレイが可能です。
-
-## immutable.jsを使う場合
-
-[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
-上記で例示したstateをimmutable.jsで作成すると次のようになります。
+ES2015ではオブジェクトのプロパティ名と値の変数名が同じ場合、省略記法を使うことができます。
 
 ```
-let state = Immutable.Map({
-  inputValue: 0,
-  resultValue: 0,
-  showingResult: false,
-});
+const foo = 'abc';
+const bar = { foo }; // same as { foo: foo }
 ```
 
-immutable.jsを使うとimmutabilityが保証されるので、
-JavaScript objectを単純に使う場合より便利です。
-一方、immutable.jsで提供されている機能以外のことを行おうとすると難しくなるかもしれないため、どちらを選択するかは注意が必要です。
+## destructuring object
 
-## 補足
-
-今回の例におけるapplication stateは一階層のobjectですが、それに限定する必要はありません。下記のようにobjectやarrayが入れ子になっても問題ありません。少し複雑なアプリを想定するとそのようになることが通常です。
+ES2015ではdestructuring assignmentという簡便な記法が使えます。特にオブジェクトについての記法を紹介します。変数への代入だけでなく、関数のパラメータ宣言でも用います。
 
 ```
-let state = {
-  name: {
-    first: 'Ebisu',
-    last: 'JS',
-  },
-  items: [1, 3, 7, 11],
-};
+const obj = { first: 'Redux', last: 'JS' };
+const { first, last } = obj;
+// first === 'Redux', last === 'JS'
+
+function printName({ first, last }) { console.log(first, last); }
+printName(obj);
+
+// same as
+// function printName(name) { console.log(name.first, name.last); }
+```
+
+## アロー関数について
+
+`() => ...`という記法はアロー関数と呼ばれます。
+
+アロー関数に関する詳細は、例えば下記を参照してください。  
+<https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/arrow_functions>
+
+`this`に関するスコープの話を置いておくと、アロー関数は通常の関数の省略記法と考えることができます。
+
+```
+const f1 = function(x) { console.log(x); };
+const f2 = (x) => { console.log(x); };
+// f1 and f2 is almost the same
+```
+
+アロー関数は`return`文が一つだけの場合は、文そのものを省略できます。
+
+```
+const f3 = (x) => { return (x + 1); };
+const f4 = (x) => (x + 1);
+// f3 and f4 is the same
+```
+
+おまけ：カッコの省略も可能ですが、好みの問題でもあります。
+
+```
+const f5 = x => x + 1;
 ```
