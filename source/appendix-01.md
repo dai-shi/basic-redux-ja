@@ -133,8 +133,19 @@ console.log(arr3.toJS());
 console.log(arr4.toJS());
 ```
 
-## 課題
+## immutable.jsを使う場合
 
-1. 上記例を実行して動きを理解する
-2. 前のLessonにあった電卓アプリのstateを書き換えてみる(immutability制約のもとで) 例えば、inputValueに3を加えたstateを作る
-3. (挑戦) 上記のstateを書き換えを関数化する(複数の方法あり) 例えば、inputValueに任意の整数を加えたstateを返す関数を作る
+[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
+上記で例示したstateをimmutable.jsで作成すると次のようになります。
+
+```
+let state = Immutable.Map({
+  inputValue: 0,
+  resultValue: 0,
+  showingResult: false,
+});
+```
+
+immutable.jsを使うとimmutabilityが保証されるので、
+JavaScript objectを単純に使う場合より便利です。
+一方、immutable.jsで提供されている機能以外のことを行おうとすると難しくなるかもしれないため、どちらを選択するかは注意が必要です。
