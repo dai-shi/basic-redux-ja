@@ -2,10 +2,14 @@
   "private": true,
   "scripts": {
     "build-html": "GITBOOK_DIR=. gitbook build source html",
-    "gitbook": "GITBOOK_DIR=. gitbook"
+    "gitbook": "GITBOOK_DIR=. gitbook",
+    "zip": "mkdir dist && cp -r html/*.html html/*.json html/gitbook dist && replace '<a href' '<a target=\"_self\" href' dist/*.html && replace 'href=\"./\"' 'href=\"index.html\"' dist/*.html && (cd dist && zip -r ../basic-redux.zip .) && rm -r dist"
   },
   "dependencies": {
     "gitbook": "^3.2.0",
     "gitbook-cli": "^2.3.0"
+  },
+  "devDependencies": {
+    "replace": "^0.3.0"
   }
 }
