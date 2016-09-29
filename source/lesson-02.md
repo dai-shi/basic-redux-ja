@@ -70,3 +70,31 @@ const f4 = (x) => (x + 1);
 ```
 const f5 = x => x + 1;
 ```
+
+## Object.assign
+
+ES2015の`Object.assign`を使うと、オブジェクトをマージすることができます。
+
+```
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+Object.assign(obj1, obj2);
+// obj1 is { a: 1, b: 3, c: 4} and obj2 is not changed
+```
+
+`Object.assign`を使えば、オブジェクトの一部のプロパティを変更した新しいオブジェクトを簡単に作れます。
+
+```
+const obj3 = { a: 1, b: 2 };
+const obj4 = Object.assign({}, obj3, { a: 5 });
+// obj4 is { a: 5, b: 2 } and obj3 is not changed
+```
+
+現在策定中のObject spread propertiesが使えれば、次のようにも書けます。
+
+```
+const obj3 = { a: 1, b: 2 };
+const obj4 = { ...obj3, a: 5 };
+```
+
+本教材では簡単に書ける最後の書式を使います。

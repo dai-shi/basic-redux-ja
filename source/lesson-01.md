@@ -75,7 +75,7 @@ const Result = ({ result }) => (
 const App = ({ store }) => {
   const state = store.getState();
   const result = state.showingResult ? state.resultValue : state.inputValue;
-  const onNumClick = (number) => () => store.dispatch({ type: INPUT_NUMBER, number });
+  const onNumClick = (number) => () => store.dispatch({ type: 'INPUT_NUMBER', number });
   return (
     <div>
       <div>
