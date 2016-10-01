@@ -24,14 +24,34 @@ let state = {
 const action1 = { type: 'INPUT_NUMBER', number: 1 };
 ```
 
-`reducer`に期待する動作は下記です。
+`reducer`が存在するとして呼び出すコードは下記です。
 
 ```
 state = reducer(state, action1);
-// state is { inputValue: 1, resultValue: 0, showingResult: false }
+if (deepEqual(state, { inputValue: 1, resultValue: 0, showingResult: false })) {
+  console.log('OK1');
+} else {
+  console.log('NG1');
+}
+
 state = reducer(state, action1);
-// state is { inputValue: 11, resultValue: 0, showingResult: false }
+if (deepEqual(state, { inputValue: 11, resultValue: 0, showingResult: false })) {
+  console.log('OK2');
+} else {
+  console.log('NG2');
+}
 ```
+
+このコードはテストコードになっており正常に動作すると、"OK"が表示されるはずです。
+
+とりあえず、ダミーのreducerをテストコードの前に追加してみましょう。
+
+```
+const reducer = (state, action) => state; // ダミーのreducer
+```
+
+これは何もしないreducerです。
+この状態ではテストは通らず、"NG"が表示されるでしょう。
 
 電卓の動きを考えながら進めましょう。
 
@@ -39,18 +59,29 @@ state = reducer(state, action1);
 const action0 = { type: 'INPUT_NUMBER', number: 0 };
 ```
 
-というactionも追加で考えます。続けて、reducerを呼び出すと、
+というactionも追加で考えます。0を置す操作に相当するactionです。
+続けて、reducerを呼び出すコードが下記です。
 
 ```
 state = reducer(state, action0);
-// state is { inputValue: 110, resultValue: 0, showingResult: false }
+if (deepEqual(state, { inputValue: 110, resultValue: 0, showingResult: false })) {
+  console.log('OK3');
+} else {
+  console.log('NG3');
+}
+
 state = reducer(state, action0);
-// state is { inputValue: 1100, resultValue: 0, showingResult: false }
+if (deepEqual(state, { inputValue: 1100, resultValue: 0, showingResult: false })) {
+  console.log('OK4');
+} else {
+  console.log('NG4');
+}
 ```
 
-のようになると期待されます。
+同じようにreducerはまだダミーなので"NG"になります。
 
-これを実現するreducerは次のようになります。
+さて、これを実現するreducerを書いてみましょう。
+次のようになります。
 
 ```
 const reducer = (state, action) => {
@@ -62,72 +93,51 @@ const reducer = (state, action) => {
 };
 ```
 
-これはまだresultを考慮していないので、機能としては不十分ですが、
+`return {}`で新しいオブジェクトを返しています。
+immutabilityの制約のもとではオブジェクトを修正することはできません。
+
+`...state`と書くことで、変更しないプロパティは引き継ぐことができます。
+
+このreducerはまだresultを考慮していないので機能としては不十分ですが、
 上記の期待する動作は満たします。
 
-## テスト
+すべて"OK"になるか動作を確認しましょう。
 
-reducerが正しく動いているかはテストすることができます。
-上記の期待する動作について結果が正しいか調べます。
-実際はアサーションライブラリを用いますが、今回はconsole.logで判定結果を表示します。
+### immutabilityのテスト
 
-```
-let state = {
-  inputValue: 0,
-  resultValue: 0,
-  showingResult: false,
-};
-const action0 = { type: 'INPUT_NUMBER', number: 0 };
-const action1 = { type: 'INPUT_NUMBER', number: 1 };
-
-state = reducer(state, action0);
-if (state.inputValue === 0 && state.resultValue === 0 && state.showingResult === false) {
-  console.log('OK');
-} else {
-  console.log('NG');
-}
-
-state = reducer(state, action1);
-if (state.inputValue === 1 && state.resultValue === 0 && state.showingResult === false) {
-  console.log('OK');
-} else {
-  console.log('NG');
-}
-
-state = reducer(state, action1);
-if (state.inputValue === 11 && state.resultValue === 0 && state.showingResult === false) {
-  console.log('OK');
-} else {
-  console.log('NG');
-}
-
-state = reducer(state, action0);
-if (state.inputValue === 110 && state.resultValue === 0 && state.showingResult === false) {
-  console.log('OK');
-} else {
-  console.log('NG');
-}
-```
-
-このようにすると正しく動いていれば、OKと表示されるはずです。
-
-また、immutabilityのテストもできます。
+上記のテストはimmutabilityの制約を守れているかは確認していません。
+immutabilityの確認をするには`deepFreeze`を使います。
 
 ```
 const state = ...;
-const action0 = ...;
-const action1 = ...;
 deepFreeze(state);
+
+const action0 = ...;
 deepFreeze(action0);
+
+const action1 = ...;
 deepFreeze(action1);
-state = reducer(state, action0);
-state = reducer(state, action1);
 ```
 
+上記のようにstateやactionを作成したらすぐにdeepFreezeで修正を禁止します。
 このようにするとreducerがstateやactionを書き換えていないことを確認できます。
+
+上記のテストコードにすべて追加して正しく動作する(すべて"OK"となる)ことを確認しましょう。
+
+一般的にdeepFreezeは処理が重いため、テストコードのみに用い、本番環境では用いません。
+本教材では、学習のため、すべてのstateとactionにdeepFreezeをついて構いません。
+
+### "+"ボタンのaction
+
+"+"ボタンのactionは単純に次のように定義できます。
+
+```
+const actionPlus = { type: 'PLUS' };
+deepFreeze(actionPlus);
+```
 
 ## 課題
 
-1. "+"ボタンの期待する動作をテストとして書く
-2. 上記テストを通るようにreducerを実装する
-3. (挑戦) immutable.jsを用いて同じ機能を実現する
+1. actionPlusを使って期待する動作をテストとして書く
+2. 上記テストを通るようにreducerを実装する (正解の一つがサンプルアプリの`appReducer`です)
+3. (難問) immutabilityの制約を破るようにreducerを書いて、エラーがでるか確認する

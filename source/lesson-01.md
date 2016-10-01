@@ -17,6 +17,7 @@ JS Binを使います。
 <script src="https://fb.me/react-15.1.0.js"></script>
 <script src="https://fb.me/react-dom-15.1.0.js"></script>
 <script src="https://npmcdn.com/redux@3.5.2/dist/redux.min.js"></script>
+<script src="https://wzrd.in/standalone/deep-equal@latest"></script>
 <script src="https://wzrd.in/standalone/deep-freeze@latest"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
 ```
@@ -38,7 +39,7 @@ const initialState = {
   resultValue: 0,
   showingResult: false,
 };
-const reducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
   if (action.type === 'INPUT_NUMBER') {
     return {
       ...state,
@@ -56,7 +57,7 @@ const reducer = (state = initialState, action) => {
     return state;
   }
 };
-const store = Redux.createStore(reducer);
+const store = Redux.createStore(appReducer);
 
 const NumBtn = ({ n, onClick }) => (
   <button onClick={onClick}>{n}</button>
