@@ -47,3 +47,7 @@ console.log(inputNumber(3));
 console.log(inputNumber(4));
 console.log(inputNumber(5));
 ```
+
+## 課題
+
+1. 上記コードの動作を確認する

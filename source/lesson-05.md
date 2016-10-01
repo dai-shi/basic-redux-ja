@@ -125,7 +125,8 @@ deepFreeze(action1);
 上記のテストコードにすべて追加して正しく動作する(すべて"OK"となる)ことを確認しましょう。
 
 一般的にdeepFreezeは処理が重いため、テストコードのみに用い、本番環境では用いません。
-本教材では、学習のため、すべてのstateとactionにdeepFreezeをついて構いません。
+本教材では、学習のため、すべてのstateとactionにdeepFreezeをつけて構いません。
+
 
 ### "+"ボタンのaction
 
@@ -141,3 +142,19 @@ deepFreeze(actionPlus);
 1. actionPlusを使って期待する動作をテストとして書く
 2. 上記テストを通るようにreducerを実装する (正解の一つがサンプルアプリの`appReducer`です)
 3. (難問) immutabilityの制約を破るようにreducerを書いて、エラーがでるか確認する
+
+## 補足
+
+JSBinの制約により通常はstrict modeで動かないため、deepFreezeのエラーの検知が難しいです。
+その場合は、全体を大きな関数でくくるとstrict modeにすることができます。
+
+```
+(function() {
+  'use strict';
+
+  // ここにすべて書く
+  // ここにすべて書く
+  // ここにすべて書く
+
+})();
+```

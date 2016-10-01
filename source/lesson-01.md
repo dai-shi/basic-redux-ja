@@ -34,12 +34,12 @@ JS Binを使います。
 ```
 console.clear(); // この行は常に残しておくとよい
 
-const initialState = {
+const initialAppState = {
   inputValue: 0,
   resultValue: 0,
   showingResult: false,
 };
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialAppState, action) => {
   if (action.type === 'INPUT_NUMBER') {
     return {
       ...state,
@@ -57,7 +57,7 @@ const appReducer = (state = initialState, action) => {
     return state;
   }
 };
-const store = Redux.createStore(appReducer);
+const appStore = Redux.createStore(appReducer);
 
 const NumBtn = ({ n, onClick }) => (
   <button onClick={onClick}>{n}</button>
@@ -103,9 +103,9 @@ const App = ({ store }) => {
   );
 };
 
-const render = () => ReactDOM.render(<App store={store} />, document.getElementById('app'));
+const render = () => ReactDOM.render(<App store={appSstore} />, document.getElementById('app'));
 render();
-store.subscribe(render);
+appStore.subscribe(render);
 ```
 
 上記はReact/Reduxで加算しかできない電卓アプリを作ったものです。
