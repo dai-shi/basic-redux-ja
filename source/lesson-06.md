@@ -12,7 +12,7 @@ const initialState = {
 };
 const reducer = (state = initialState, action) => {
   if (action.type === 'INPUT_NUMBER') {
-    return { ...state, inputValue: state.inputValue * 10 + action.number; };
+    return { ...state, inputValue: state.inputValue * 10 + action.number };
   } else {
     return state;
   }
@@ -65,18 +65,11 @@ store.dispatch({ type: 'INPUT_NUMBER', number: 2 });
 store.dispatch({ type: 'INPUT_NUMBER', number: 3 });
 ```
 
-Reactの場合は、例えば単純には次のようにすることになります。
-
-```
-let globalState = {}; // not suitable for real development
-store.subscribe(() => {
-  globalState = store.getState();
-  render(); // assuming we defined this to render all React components
-});
-```
+Reactの場合は、subscribeしてrenderを呼び出すことで画面を更新します。
+このときstoreを渡すようにしてコンポーネントの中でうまくstoreを使うことで
+依存関係を明確できます(すなわちグローバル変数を使わずにすみます)。
 
 ## 課題
 
-1. 上記コードの動作を確認する
+1. 上記コードの動作を確認する (React版ではない方)
 2. "+"ボタン用の機能を追加したreducerに拡張して動作を確認する
-3. (挑戦) ReactのコンポーネントでinputValueを表示する
