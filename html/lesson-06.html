@@ -304,7 +304,7 @@
 };
 const reducer = (state = initialState, action) =&gt; {
   if (action.type === &apos;INPUT_NUMBER&apos;) {
-    return { ...state, inputValue: state.inputValue * 10 + action.number; };
+    return { ...state, inputValue: state.inputValue * 10 + action.number };
   } else {
     return state;
   }
@@ -326,16 +326,11 @@ store.dispatch(action);</code></pre>
 store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 1 });
 store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 2 });
 store.dispatch({ type: &apos;INPUT_NUMBER&apos;, number: 3 });</code></pre>
-<p>React&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x4F8B;&#x3048;&#x3070;&#x5358;&#x7D14;&#x306B;&#x306F;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p><pre><code>let globalState = {}; // not suitable for real development
-store.subscribe(() =&gt; {
-  globalState = store.getState();
-  render(); // assuming we defined this to render all React components
-});</code></pre>
-<h2 id="&#x8AB2;&#x984C;">&#x8AB2;&#x984C;</h2><ol><li>&#x4E0A;&#x8A18;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;
+<p>React&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;subscribe&#x3057;&#x3066;render&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3053;&#x3068;&#x3067;&#x753B;&#x9762;&#x3092;&#x66F4;&#x65B0;&#x3057;&#x307E;&#x3059;&#x3002;
+&#x3053;&#x306E;&#x3068;&#x304D;store&#x3092;&#x6E21;&#x3059;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x4E2D;&#x3067;&#x3046;&#x307E;&#x304F;store&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x3067;
+&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x3092;&#x660E;&#x78BA;&#x3067;&#x304D;&#x307E;&#x3059;(&#x3059;&#x306A;&#x308F;&#x3061;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3092;&#x4F7F;&#x308F;&#x305A;&#x306B;&#x3059;&#x307F;&#x307E;&#x3059;)&#x3002;</p><h2 id="&#x8AB2;&#x984C;">&#x8AB2;&#x984C;</h2><ol><li>&#x4E0A;&#x8A18;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B; (React&#x7248;&#x3067;&#x306F;&#x306A;&#x3044;&#x65B9;)
 </li>
 <li>&quot;+&quot;&#x30DC;&#x30BF;&#x30F3;&#x7528;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x8FFD;&#x52A0;&#x3057;&#x305F;reducer&#x306B;&#x62E1;&#x5F35;&#x3057;&#x3066;&#x52D5;&#x4F5C;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;
-</li>
-<li>(&#x6311;&#x6226;) React&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3067;inputValue&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;
 </li></ol>
 
                                 
@@ -380,7 +375,7 @@ store.subscribe(() =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 06: Store","level":"1.7","depth":1,"next":{"title":"Lesson 07: Reducer合成","level":"1.8","depth":1,"path":"lesson-07.md","ref":"lesson-07.md","articles":[]},"previous":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"path":"lesson-05.md","ref":"lesson-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-06.md","mtime":"2016-09-22T06:34:33.882Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-01T07:25:01.022Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 06: Store","level":"1.7","depth":1,"next":{"title":"Lesson 07: Reducer合成","level":"1.8","depth":1,"path":"lesson-07.md","ref":"lesson-07.md","articles":[]},"previous":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"path":"lesson-05.md","ref":"lesson-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-06.md","mtime":"2016-10-02T11:36:12.963Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-03T21:30:44.561Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
