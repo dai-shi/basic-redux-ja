@@ -9,7 +9,12 @@ middlewareは自分で作成することもできますが、
 既に様々なものが公開されており、再利用することができます。
 
 ReduxのドキュメントにはLoggingのmiddlewareの例が紹介されています。
-middlewareで多くのケースで必要になるのは、API呼び出しなどの同期処理であり、
-これには、[redux-thunk](https://github.com/gaearon/redux-thunk)や[redux-saga](https://github.com/yelouafi/redux-saga)が有名です。
+多くのケースでmiddlewareが必須になるのはAPI呼び出しなどの非同期処理であり、
+これには[redux-thunk](https://github.com/gaearon/redux-thunk)が有名ですが、
+最近では様々なmiddlewareが提案されています。
+- [redux-saga](https://github.com/yelouafi/redux-saga)
+- [redux-observable](https://redux-observable.js.org)
+- [redux-logic](https://github.com/jeffbski/redux-logic)
+- [redux-loop](https://github.com/redux-loop/redux-loop)
 
-[http://redux.js.org/docs/advanced/Middleware.html]
+middlewareについては[http://redux.js.org/docs/advanced/Middleware.html](公式ページの解説)を一度見ておくとよいでしょう。

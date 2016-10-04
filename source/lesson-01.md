@@ -103,7 +103,7 @@ const App = ({ store }) => {
   );
 };
 
-const render = () => ReactDOM.render(<App store={appSstore} />, document.getElementById('app'));
+const render = () => ReactDOM.render(<App store={appStore} />, document.getElementById('app'));
 render();
 appStore.subscribe(render);
 ```
