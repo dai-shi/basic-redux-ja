@@ -7,9 +7,9 @@ middlewareの適用には[applyMiddleware](http://redux.js.org/docs/api/applyMid
 
 middlewareは自分で作成することもできますが、
 既に様々なものが公開されており、再利用することができます。
-
 ReduxのドキュメントにはLoggingのmiddlewareの例が紹介されています。
-多くのケースでmiddlewareが必須になるのはAPI呼び出しなどの非同期処理であり、
+
+また、多くのケースでmiddlewareが必須になるのはAPI呼び出しなどの非同期処理であり、
 これには[redux-thunk](https://github.com/gaearon/redux-thunk)が有名ですが、
 最近では様々なmiddlewareが提案されています。
 - [redux-saga](https://github.com/yelouafi/redux-saga)
@@ -17,4 +17,4 @@ ReduxのドキュメントにはLoggingのmiddlewareの例が紹介されてい�
 - [redux-logic](https://github.com/jeffbski/redux-logic)
 - [redux-loop](https://github.com/redux-loop/redux-loop)
 
-middlewareについては[http://redux.js.org/docs/advanced/Middleware.html](公式ページの解説)を一度見ておくとよいでしょう。
+middlewareについては[公式ページの解説](http://redux.js.org/docs/advanced/Middleware.html)を一度見ておくとよいでしょう。

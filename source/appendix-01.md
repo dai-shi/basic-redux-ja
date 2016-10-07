@@ -112,6 +112,8 @@ JavaScriptのオブジェクトはmutableですが、作成後に変更できな
 
 ## immutable.jsを使う場合
 
+[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
+
 上記の例と同様の例をimmutable.jsで書いてみると、下記のようになります。
 
 ```
@@ -131,19 +133,6 @@ console.log(arr.toJS());
 console.log(arr2.toJS());
 console.log(arr3.toJS());
 console.log(arr4.toJS());
-```
-
-## immutable.jsを使う場合
-
-[immutable.js](https://facebook.github.io/immutable-js/)はfacebookが開発したライブラリで、疑似的なobjectをimmutableに扱えるようにするものです。
-上記で例示したstateをimmutable.jsで作成すると次のようになります。
-
-```
-let state = Immutable.Map({
-  inputValue: 0,
-  resultValue: 0,
-  showingResult: false,
-});
 ```
 
 immutable.jsを使うとimmutabilityが保証されるので、

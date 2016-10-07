@@ -7,6 +7,8 @@ MapReduceなどが有名です。
 Reduxにおけるreducerはstateとactionを入力とし、新しいstateを返す関数です。
 このときのstateはすべてimmutabilityの制約のもとで扱わなければいけません。
 actionはstateを変化させる操作に相当します。
+また、stateを変化させることができるのはreducerのみで、
+reduderは副作用を起こしてはいけないという制約があります。
 
 ## 電卓アプリの例
 
@@ -59,7 +61,7 @@ const reducer = (state, action) => state; // ダミーのreducer
 const action0 = { type: 'INPUT_NUMBER', number: 0 };
 ```
 
-というactionも追加で考えます。0を置す操作に相当するactionです。
+というactionも追加で考えます。0を押す操作に相当するactionです。
 続けて、reducerを呼び出すコードが下記です。
 
 ```
@@ -152,9 +154,9 @@ JSBinの制約により通常はstrict modeで動かないため、deepFreezeの
 (function() {
   'use strict';
 
+  //------------------
   // ここにすべて書く
-  // ここにすべて書く
-  // ここにすべて書く
+  //------------------
 
 })();
 ```

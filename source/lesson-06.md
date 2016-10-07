@@ -1,6 +1,10 @@
 # Store
 
-application stateを管理する場所がstoreです。storeは内部にreducerを持ち、actionを入力として受け取り、stateを出力します。
+application stateを管理する場所がstoreです。
+storeはreducerとmiddleware(appendix参照)によって構成され、
+内部にstateを持ちます。
+storeにactionを入力すると、reducerによってstateが更新されます。
+また、storeからstateを取り出すことができます。
 
 ## storeを作成する
 
@@ -22,8 +26,8 @@ const store = Redux.createStore(reducer);
 
 reducerを作成して、それをもとにstoreを作成します。
 
-reducerにはstateの初期値を設定する必要もあります。
-ES2015のdefault parametersを使うと簡単に書けます。
+reducerはstateの初期値にも対応する(stateが与えられない場合初期化する)必要もあります。
+ES2015のdefault parametersを使うと上記のように簡単に書けます。
 
 ## storeにactionを発行する
 
@@ -66,8 +70,10 @@ store.dispatch({ type: 'INPUT_NUMBER', number: 3 });
 ```
 
 Reactの場合は、subscribeしてrenderを呼び出すことで画面を更新します。
-このときstoreを渡すようにしてコンポーネントの中でうまくstoreを使うことで
-依存関係を明確できます(すなわちグローバル変数を使わずにすみます)。
+このときコンポーネントにstoreを渡すようにしてコンポーネントは
+渡されたstoreのみを使って処理するようにします。
+このようにすると、グローバル変数を使うことなく、
+モジュール性を高めることができます。
 
 ## 課題
 

@@ -1,7 +1,7 @@
 # Action
 
 actionはstateを変化させる操作に相当します。
-actionはReducerの入力の一つになります。
+actionは次のレッスンで説明するreducerの入力になります。
 Reduxではactionはtypeプロパティを持つオブジェクトです。
 
 ## actionの例
