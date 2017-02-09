@@ -1,17 +1,20 @@
 # 環境構築
 
-JS Binを使います。
+CodePenを使います。
 
 ## アクセス先
 
-<https://jsbin.com>
+<https://codepen.io>
+
+"New Pen"をクリックしてスタート。
 
 ## 初期設定
 
 下記の手順を実施してください。
 
-1. 左上の「×」を押して画面を広くする
-2. HTMLの`<body>`タグの中に
+1. "Change View"で好みのレイアウトに変更する
+2. "Settings"のJavaScriptを開いてPreprocessorをBabelにする
+3. HTMLのエリアに下記を書く
 ```
 <div id="app"></div>
 <script src="https://fb.me/react-15.1.0.js"></script>
@@ -22,10 +25,8 @@ JS Binを使います。
 <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
 ```
 を追記する
-3. HTMLボタンを押してHTMLタブを消す
 4. Consoleボタンを押してConsoleタブを表示する
-5. JavaScriptボタンを押してJavaScriptタブを表示する
-6. 青字のJavaScriptの右にある三角マークを押して、ドロップダウンから「ES6/Babel」を選択する (このエリアをJavaScriptエリアと呼ぶ)
+5. HTMLとCSSのエリアは小さくして良い
 
 ## サンプルアプリのコード
 
