@@ -24,7 +24,6 @@ CodePenを使います。
 <script src="https://wzrd.in/standalone/deep-freeze@latest"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
 ```
-を追記する
 4. Consoleボタンを押してConsoleタブを表示する
 5. HTMLとCSSのエリアは小さくして良い
 
@@ -115,5 +114,3 @@ appStore.subscribe(render);
 ## 補足
 
 - ブラウザをリロードすると設定が戻ってしまう場合があるので、その場合は上記手順をやり直す
-- 左上のロゴマークを押してKeyboard Shortcutsを参照できる
-- [jshintの設定のヒント](https://github.com/jsbin/jsbin/issues/2792#issuecomment-235769959)
