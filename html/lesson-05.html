@@ -368,15 +368,16 @@ deepFreeze(actionPlus);</code></pre>
 </li>
 <li>(&#x96E3;&#x554F;) immutability&#x306E;&#x5236;&#x7D04;&#x3092;&#x7834;&#x308B;&#x3088;&#x3046;&#x306B;reducer&#x3092;&#x66F8;&#x3044;&#x3066;&#x3001;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x3067;&#x308B;&#x304B;&#x78BA;&#x8A8D;&#x3059;&#x308B;
 </li></ol>
-<h2 id="&#x88DC;&#x8DB3;">&#x88DC;&#x8DB3;</h2><p>JSBin&#x306E;&#x5236;&#x7D04;&#x306B;&#x3088;&#x308A;&#x901A;&#x5E38;&#x306F;strict mode&#x3067;&#x52D5;&#x304B;&#x306A;&#x3044;&#x305F;&#x3081;&#x3001;deepFreeze&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x691C;&#x77E5;&#x304C;&#x96E3;&#x3057;&#x3044;&#x3067;&#x3059;&#x3002;
-&#x305D;&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x5168;&#x4F53;&#x3092;&#x5927;&#x304D;&#x306A;&#x95A2;&#x6570;&#x3067;&#x304F;&#x304F;&#x308B;&#x3068;strict mode&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p><pre><code>(function() {
-  &apos;use strict&apos;;
+<h2 id="&#x88DC;&#x8DB3;">&#x88DC;&#x8DB3;</h2><p>Codepen&#x3067;&#x306F;&#x901A;&#x5E38;&#x306F;deepFreeze&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x7121;&#x8996;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#x305F;&#x3081;&#x3001;
+&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x306B;&#x306F;&#x4E0B;&#x8A18;&#x306E;&#x3088;&#x3046;&#x306B;&#x5168;&#x4F53;&#x3092;try-catch&#x3067;&#x56F2;&#x3046;&#x3068;&#x3088;&#x3044;&#x3067;&#x3057;&#x3087;&#x3046;&#x3002;</p><pre><code>try {
 
   //------------------
   // &#x3053;&#x3053;&#x306B;&#x3059;&#x3079;&#x3066;&#x66F8;&#x304F;
   //------------------
 
-})();</code></pre>
+} catch (e) {
+  console.error(e.message);
+}</code></pre>
 
                                 
                                 </section>
@@ -420,7 +421,7 @@ deepFreeze(actionPlus);</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"next":{"title":"Lesson 06: Store","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Action","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2016-10-07T10:10:55.550Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-02-13T11:20:11.671Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lesson 05: Reducer","level":"1.6","depth":1,"next":{"title":"Lesson 06: Store","level":"1.7","depth":1,"path":"lesson-06.md","ref":"lesson-06.md","articles":[]},"previous":{"title":"Lesson 04: Action","level":"1.5","depth":1,"path":"lesson-04.md","ref":"lesson-04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lesson-05.md","mtime":"2017-02-19T21:47:45.544Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-02-19T21:48:31.075Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
