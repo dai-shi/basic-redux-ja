@@ -147,16 +147,17 @@ deepFreeze(actionPlus);
 
 ## 補足
 
-JSBinの制約により通常はstrict modeで動かないため、deepFreezeのエラーの検知が難しいです。
-その場合は、全体を大きな関数でくくるとstrict modeにすることができます。
+Codepenでは通常はdeepFreezeのエラーが無視されてしまうため、
+エラーを表示するには下記のように全体をtry-catchで囲うとよいでしょう。
 
 ```
-(function() {
-  'use strict';
+try {
 
   //------------------
   // ここにすべて書く
   //------------------
 
-})();
+} catch (e) {
+  console.error(e.message);
+}
 ```
